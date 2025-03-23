@@ -2,23 +2,57 @@
 import Link from "next/link";
 import { Container } from "@/components/Container";
 import { Hero } from "@/components/Hero";
-import { SectionTitle } from "@/components/SectionTitle";
-import React from "react";
-import { benefitOne, benefitTwo } from "@/components/data";
-import { motion } from "framer-motion";
+import React, { useEffect, useRef } from "react";
+import {
+  BuildingOfficeIcon,
+  CalculatorIcon,
+  DocumentCheckIcon,
+  PhoneIcon,
+  UserGroupIcon,
+  ScaleIcon,
+  WrenchScrewdriverIcon,
+  ShieldCheckIcon,
+} from "@heroicons/react/24/solid";
+import { ChevronRightIcon } from "@heroicons/react/24/solid";
 
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
+// Service and Client Data
+const services = [
+  { title: "Byggekontroll", icon: <BuildingOfficeIcon />, desc: "Kvalitet i fokus." },
+  { title: "Taksering", icon: <CalculatorIcon />, desc: "Presis verdivurdering." },
+  { title: "Skjønn", icon: <DocumentCheckIcon />, desc: "Uavhengig innsikt." },
+  { title: "Overlevering", icon: <BuildingOfficeIcon />, desc: "Sømløs overgang." },
+  { title: "Byggelånskontroll", icon: <CalculatorIcon />, desc: "Økonomisk trygghet." },
+  { title: "Prosjekt- og Byggeledelse", icon: <WrenchScrewdriverIcon />, desc: "Ledelse med visjon." },
+  { title: "Byggesøknader", icon: <DocumentCheckIcon />, desc: "Effektivitet først." },
+  { title: "Telefonbistand", icon: <PhoneIcon />, desc: "Alltid tilgjengelig." },
+  { title: "Rådgivning", icon: <ScaleIcon />, desc: "Fremtidsrettet støtte." },
+];
+
+const clients = [
+  { title: "Private boligeiere", icon: <UserGroupIcon /> },
+  { title: "Borettslag og boligsameier", icon: <UserGroupIcon /> },
+  { title: "Advokater", icon: <ScaleIcon /> },
+  { title: "Entreprenører/utbyggere", icon: <WrenchScrewdriverIcon /> },
+  { title: "Forsikringsselskap", icon: <ShieldCheckIcon /> },
+];
 
 export default function Home() {
-  const allBenefits = [
-    { ...benefitOne, id: "benefitOne" },
-    { ...benefitTwo, id: "benefitTwo" },
-  ];
+  const headerRef = useRef(null);
 
-  // Navigation links matching Tjenster page sections
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      if (headerRef.current) {
+        headerRef.current.style.opacity = scrollY > 150 ? "0.9" : "1";
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, []);
+
   const sectionLinks = [
     { name: "Byggekontroll", href: "/tjenester#byggekontroll" },
     { name: "Taksering", href: "/tjenester#taksering" },
@@ -32,104 +66,172 @@ export default function Home() {
     { name: "Rådgivning", href: "/tjenester#radgivning" },
   ];
 
-  // Handle click to ensure scrolling after navigation
   const handleLinkClick = (href: string, title: string) => {
-    console.log(`Clicked: ${title}, Navigating to: ${href}`); // Debug clicked title and URL
+    console.log(`Clicked: ${title}, Navigating to: ${href}`);
     const [path, hash] = href.split("#");
-    if (path === "/tjenester" && hash) {
-      window.location.href = href; // Navigate manually
+    if ((path === "/tjenester" || path === "/om-oss") && hash) {
+      window.location.href = href;
       setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
-          console.log(`Scrolling to: ${hash}`); // Confirm scroll target
-          element.scrollIntoView({ behavior: "smooth" });
-        } else {
-          console.log(`Element not found: ${hash}`); // Debug if element missing
+          const navbar = document.querySelector("nav");
+          const navbarHeight = navbar ? navbar.offsetHeight : 80;
+          const offset = navbarHeight + 20;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth",
+          });
         }
-      }, 500); // Increased delay to ensure page loads
+      }, 600); // Delay to allow page navigation to complete
     } else {
-      console.log(`No hash found or invalid path: ${href}`); // Debug fallback case
-      window.location.href = href; // Fallback navigation
+      window.location.href = href;
     }
   };
 
   return (
-    <div className="bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-gray-800">
+    <div className="min-h-screen bg-gradient-to-br from-teal-50 via-green-50 to-gray-50 dark:from-teal-950 dark:via-green-950 dark:to-gray-900 font-sans overflow-x-hidden">
       <Container>
         <Hero />
-        <SectionTitle title="Vi kan tilby:" />
-        {allBenefits.map((benefit) => (
-          <motion.div
-            key={benefit.id}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="mb-24 pt-24 lg:pt-36"
+
+        {/* Services Section */}
+        <section className="py-28 lg:py-40 relative z-20 -mt-28">
+          <div
+            ref={headerRef}
+            className="sticky top-16 z-30 text-center mb-20 bg-gradient-to-b from-teal-50/70 to-transparent dark:from-teal-950/70 py-8 rounded-b-3xl shadow-lg transition-opacity duration-300"
           >
-            <h3
-              className="text-3xl font-semibold text-gray-900 lg:text-4xl dark:text-white bg-clip-text bg-gradient-to-r from-[#308453] to-[#4CAF50] text-transparent tracking-tight mb-16 text-center"
-              style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+            <h2
+              className="text-6xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-400 tracking-tighter drop-shadow-2xl"
+              style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
             >
-              {benefit.title}
-            </h3>
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-2 lg:grid-cols-3 px-6 md:px-12 lg:px-20">
-              {benefit.bullets.map((item, index) => {
-                const link =
-                  item.title === "SKJØNN"
-                    ? "/tjenester#skjonn" // Hardcode for Skjønn to test
-                    : sectionLinks.find((link) => link.name === item.title)?.href || "/tjenester";
-                console.log(`Item title: ${item.title}, Assigned href: ${link}`); // Debug each title and href
-                return (
-                  <motion.div
-                    key={index}
-                    initial="hidden"
-                    whileInView="visible"
-                    viewport={{ once: true, amount: 0.3 }}
-                    variants={fadeInUp}
-                    whileHover={{ scale: 1.05 }}
-                    transition={{ duration: 0.2 }}
-                  >
-                    <Link
-                      href={link}
-                      className="block"
-                      onClick={(e) => {
-                        e.preventDefault(); // Prevent default navigation
-                        handleLinkClick(link, item.title); // Handle navigation and scroll
-                      }}
-                    >
-                      <div className="bg-white dark:bg-gray-800 rounded-2xl p-10 shadow-xl hover:shadow-2xl transition-all duration-300 border border-gray-200/30 dark:border-gray-700/30 hover:border-[#308453]/50 cursor-pointer flex flex-col items-start space-y-6 w-full group">
-                        <div className="flex items-center justify-center flex-shrink-0 bg-gradient-to-br from-[#308453] to-[#4CAF50] rounded-full w-14 h-14">
-                          {React.cloneElement(item.icon, { className: "w-7 h-7 text-white" })}
-                        </div>
-                        <h4
-                          className="text-xl font-semibold text-gray-900 dark:text-gray-100 leading-tight"
-                          style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
-                        >
-                          {item.title}
-                        </h4>
-                        <p
-                          className="text-base leading-relaxed text-gray-600 dark:text-gray-400"
-                          style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
-                        >
-                          {item.desc}
-                        </p>
-                        <p
-                          className="mt-4 text-sm font-medium text-[#308453] opacity-0 group-hover:opacity-100 transition-opacity duration-300 relative"
-                          style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
-                        >
-                          Les Mer
-                          <span className="absolute left-0 bottom-[-4px] w-0 h-1 bg-gradient-to-r from-[#308453] to-[#4CAF50] group-hover:w-full transition-all duration-300" />
-                        </p>
-                      </div>
-                    </Link>
-                  </motion.div>
-                );
-              })}
+              Våre Tjenester
+            </h2>
+            <p className="mt-6 text-xl lg:text-2xl text-gray-700 dark:text-gray-100 max-w-3xl mx-auto font-light leading-relaxed">
+              Skreddersydde løsninger i harmoni med fremtiden.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-6 lg:px-0 perspective-1000">
+            {services.map((service, index) => (
+              <div
+                key={index}
+                className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-3xl p-8 border border-gradient-to-br from-teal-500/40 to-green-400/40 hover:border-teal-500/80 hover:scale-[1.08] hover:shadow-[0_25px_50px_rgba(0,0,0,0.2),0_0_30px_rgba(74,222,128,0.4)] transition-all duration-600 transform-gpu relative z-10"
+              >
+                <Link
+                  href={sectionLinks.find((link) => link.name === service.title)?.href || "/tjenester"}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    handleLinkClick(
+                      sectionLinks.find((link) => link.name === service.title)?.href || "/tjenester",
+                      service.title
+                    );
+                  }}
+                >
+                  <div className="flex items-start space-x-6">
+                    <div className="flex-shrink-0 bg-gradient-to-br from-teal-500 to-green-400 rounded-full p-4 shadow-xl">
+                      {React.cloneElement(service.icon, { className: "w-8 h-8 text-white" })}
+                    </div>
+                    <div>
+                      <h3 className="text-2xl font-bold text-gray-900 dark:text-white hover:text-green-400 dark:hover:text-green-300 transition-colors duration-300">
+                        {service.title}
+                      </h3>
+                      <p className="mt-3 text-sm text-gray-600 dark:text-gray-300 font-light">{service.desc}</p>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* Clients Section */}
+        <section className="py-20 lg:py-28 relative z-10">
+          <div className="bg-gradient-to-r from-teal-500/15 to-green-400/15 rounded-3xl p-12 lg:p-16 shadow-2xl">
+            <h2
+              className="text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-400 tracking-tight text-center"
+              style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
+            >
+              Våre Partnere
+            </h2>
+            <p className="mt-6 text-lg lg:text-xl text-gray-700 dark:text-gray-100 text-center max-w-2xl mx-auto font-light">
+              Sammen bygger vi en grønnere fremtid.
+            </p>
+            <div className="mt-12 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 px-4 lg:px-0 scrollbar-hidden">
+              {clients.map((client, index) => (
+                <div
+                  key={index}
+                  className="snap-center flex-shrink-0 bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl rounded-full px-8 py-4 flex items-center space-x-4 border border-green-400/30 hover:border-green-400/70 hover:scale-[1.2] hover:shadow-[0_0_20px_rgba(74,222,128,0.6)] transition-all duration-500 min-w-[260px] relative z-10"
+                >
+                  <span className="text-green-500 dark:text-green-300">
+                    {React.cloneElement(client.icon, { className: "w-7 h-7" })}
+                  </span>
+                  <span className="text-lg font-medium text-gray-800 dark:text-gray-100 whitespace-nowrap">
+                    {client.title}
+                  </span>
+                </div>
+              ))}
             </div>
-          </motion.div>
-        ))}
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="min-h-screen flex items-center justify-center py-40 bg-gradient-to-br from-teal-600 to-green-500 text-white relative overflow-hidden">
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.25),transparent)] opacity-60" />
+          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(74,222,128,0.2),transparent)] animate-cinematicPulse" />
+          <Container className="text-center relative z-10">
+            <h2
+              className="text-6xl lg:text-9xl font-extrabold tracking-tighter drop-shadow-2xl"
+              style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
+            >
+              Kontakt oss
+            </h2>
+            <p className="mt-8 text-xl lg:text-3xl max-w-4xl mx-auto font-light leading-relaxed">
+              Gjennomfør ditt prosjekt med kvalitet
+            </p>
+            <div className="mt-16">
+              <Link
+                href="/om-oss#kontakt-oss"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handleLinkClick("/om-oss#kontakt-oss", "Kontakt oss");
+                }}
+                className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
+              >
+                Kom i Gang <ChevronRightIcon className="w-9 h-9 ml-4" />
+              </Link>
+            </div>
+          </Container>
+        </section>
       </Container>
+
+      {/* Global Styles */}
+      <style jsx global>{`
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap');
+        body {
+          cursor: auto; /* Restore default cursor */
+          overflow-x: hidden;
+        }
+        .scrollbar-hidden {
+          -ms-overflow-style: none; /* IE and Edge */
+          scrollbar-width: none; /* Firefox */
+        }
+        .scrollbar-hidden::-webkit-scrollbar {
+          display: none; /* Chrome, Safari, Opera */
+        }
+        .perspective-1000 {
+          perspective: 1000px;
+        }
+        @keyframes cinematicPulse {
+          0%, 100% { opacity: 0.4; transform: scale(1); }
+          50% { opacity: 0.7; transform: scale(1.02); }
+        }
+        .animate-cinematicPulse {
+          animation: cinematicPulse 8s infinite ease-in-out;
+        }
+        .transform-gpu {
+          transform: translateZ(0);
+          backface-visibility: hidden;
+        }
+      `}</style>
     </div>
   );
 }

@@ -1,3 +1,4 @@
+"use client";
 import { Container } from "@/components/Container";
 import { motion } from "framer-motion";
 
@@ -7,6 +8,29 @@ const fadeInUp = {
 };
 
 export const Hero = () => {
+  const handleLinkClick = (href: string) => {
+    const [path, hash] = href.split("#");
+    if (path === "/om-oss" && hash) {
+      window.location.href = href;
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const navbar = document.querySelector("nav");
+          const navbarHeight = navbar ? navbar.offsetHeight : 80; // Default to 80px if no navbar
+          const buffer = 40; // Consistent with Om page
+          const offset = navbarHeight + buffer;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth",
+          });
+        }
+      }, 600); // Delay to allow page navigation
+    } else {
+      window.location.href = href;
+    }
+  };
+
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -41,7 +65,7 @@ export const Hero = () => {
           Sertifisert taksering i Troms
         </motion.h1>
 
-        {/* Text and Buttons */}
+        {/* Text and Buttons */}  
         <div className="mt-24 max-w-3xl space-y-16 px-4 lg:px-8">
           {/* Additional Text */}
           <motion.p
@@ -62,7 +86,11 @@ export const Hero = () => {
             className="mt-20 flex flex-col gap-6 sm:flex-row sm:justify-center"
           >
             <a
-              href="#"
+              href="/om-oss#kontakt-oss"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick("/om-oss#kontakt-oss");
+              }}
               className="w-full transform rounded-full bg-gradient-to-r from-[#308453] to-[#4CAF50] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 sm:w-auto font-sans"
               style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
             >
