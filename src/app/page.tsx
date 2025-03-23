@@ -37,7 +37,10 @@ const clients = [
 ];
 
 export default function Home() {
-  const headerRef = useRef(null);
+  const basePath = "/Byggebistand-Troms"; // Add basePath for production
+
+  // Type the ref as HTMLDivElement
+  const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -54,22 +57,22 @@ export default function Home() {
   }, []);
 
   const sectionLinks = [
-    { name: "Byggekontroll", href: "/tjenester#byggekontroll" },
-    { name: "Taksering", href: "/tjenester#taksering" },
-    { name: "Røykvarslerdagen", href: "/tjenester#roykvarslerdagen" },
-    { name: "Skjønn", href: "/tjenester#skjonn" },
-    { name: "Overlevering", href: "/tjenester#overlevering" },
-    { name: "Byggelånskontroll", href: "/tjenester#byggelanskontroll" },
-    { name: "Prosjekt- og Byggeledelse", href: "/tjenester#prosjekt-og-byggeledelse" },
-    { name: "Byggesøknader", href: "/tjenester#byggesoknader" },
-    { name: "Telefonbistand", href: "/tjenester#telefonbistand" },
-    { name: "Rådgivning", href: "/tjenester#radgivning" },
+    { name: "Byggekontroll", href: `${basePath}/tjenester#byggekontroll` }, // Include basePath in href
+    { name: "Taksering", href: `${basePath}/tjenester#taksering` }, // Include basePath in href
+    { name: "Røykvarslerdagen", href: `${basePath}/tjenester#roykvarslerdagen` }, // Include basePath in href
+    { name: "Skjønn", href: `${basePath}/tjenester#skjonn` }, // Include basePath in href
+    { name: "Overlevering", href: `${basePath}/tjenester#overlevering` }, // Include basePath in href
+    { name: "Byggelånskontroll", href: `${basePath}/tjenester#byggelanskontroll` }, // Include basePath in href
+    { name: "Prosjekt- og Byggeledelse", href: `${basePath}/tjenester#prosjekt-og-byggeledelse` }, // Include basePath in href
+    { name: "Byggesøknader", href: `${basePath}/tjenester#byggesoknader` }, // Include basePath in href
+    { name: "Telefonbistand", href: `${basePath}/tjenester#telefonbistand` }, // Include basePath in href
+    { name: "Rådgivning", href: `${basePath}/tjenester#radgivning` }, // Include basePath in href
   ];
 
   const handleLinkClick = (href: string, title: string) => {
     console.log(`Clicked: ${title}, Navigating to: ${href}`);
     const [path, hash] = href.split("#");
-    if ((path === "/tjenester" || path === "/om-oss") && hash) {
+    if ((path === `${basePath}/tjenester` || path === `${basePath}/om-oss`) && hash) {
       window.location.href = href;
       setTimeout(() => {
         const element = document.getElementById(hash);
@@ -117,11 +120,11 @@ export default function Home() {
                 className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-3xl p-8 border border-gradient-to-br from-teal-500/40 to-green-400/40 hover:border-teal-500/80 hover:scale-[1.08] hover:shadow-[0_25px_50px_rgba(0,0,0,0.2),0_0_30px_rgba(74,222,128,0.4)] transition-all duration-600 transform-gpu relative z-10"
               >
                 <Link
-                  href={sectionLinks.find((link) => link.name === service.title)?.href || "/tjenester"}
+                  href={sectionLinks.find((link) => link.name === service.title)?.href || `${basePath}/tjenester`} // Include basePath in href
                   onClick={(e) => {
                     e.preventDefault();
                     handleLinkClick(
-                      sectionLinks.find((link) => link.name === service.title)?.href || "/tjenester",
+                      sectionLinks.find((link) => link.name === service.title)?.href || `${basePath}/tjenester`,
                       service.title
                     );
                   }}
@@ -189,10 +192,10 @@ export default function Home() {
             </p>
             <div className="mt-16">
               <Link
-                href="/om-oss#kontakt-oss"
+                href={`${basePath}/om-oss#kontakt-oss`} // Include basePath in href
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick("/om-oss#kontakt-oss", "Kontakt oss");
+                  handleLinkClick(`${basePath}/om-oss#kontakt-oss`, "Kontakt oss");
                 }}
                 className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
               >

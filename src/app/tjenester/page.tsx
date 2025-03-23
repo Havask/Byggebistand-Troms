@@ -25,18 +25,28 @@ import {
 // Animation Variants
 const fadeIn = {
   hidden: { opacity: 0, y: 20 },
-  visible: { 
-    opacity: 1, 
-    y: 0, 
-    transition: { 
-      duration: 0.5, 
-      ease: "easeOut" 
-    } 
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
   },
 };
 
-// SubCollapsible Component (unchanged)
-const SubCollapsible = ({ title, icon: Icon, content, id, isOpen, onToggle }) => {
+// Define props interface for SubCollapsible
+interface SubCollapsibleProps {
+  title: string;
+  icon: React.ElementType; // For Heroicons or similar components
+  content: string | React.ReactNode;
+  id: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+// SubCollapsible Component with typed props
+const SubCollapsible = ({ title, icon: Icon, content, id, isOpen, onToggle }: SubCollapsibleProps) => {
   if (!Icon) {
     return <div>Feil: Ikonet for "{title}" er undefined</div>;
   }
@@ -66,31 +76,19 @@ const SubCollapsible = ({ title, icon: Icon, content, id, isOpen, onToggle }) =>
     </div>
   );
 };
-const handleLinkClick = (href: string, title: string) => {
-  console.log(`Clicked: ${title}, Navigating to: ${href}`);
-  const [path, hash] = href.split("#");
-  if ((path === "/tjenester" || path === "/om-oss") && hash) {
-    window.location.href = href;
-    setTimeout(() => {
-      const element = document.getElementById(hash);
-      if (element) {
-        const navbar = document.querySelector("nav");
-        const navbarHeight = navbar ? navbar.offsetHeight : 80;
-        const offset = navbarHeight + 20;
-        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
-        window.scrollTo({
-          top: elementPosition - offset,
-          behavior: "smooth",
-        });
-      }
-    }, 600); // Delay to allow page navigation to complete
-  } else {
-    window.location.href = href;
-  }
-};
 
-// Collapsible Section Component (unchanged)
-const CollapsibleSection = ({ title, icon: Icon, content, id, isOpen, onToggle }) => {
+// Define props interface for CollapsibleSection
+interface CollapsibleSectionProps {
+  title: string;
+  icon: React.ElementType;
+  content: string | React.ReactNode;
+  id: string;
+  isOpen: boolean;
+  onToggle: () => void;
+}
+
+// Collapsible Section Component with typed props
+const CollapsibleSection = ({ title, icon: Icon, content, id, isOpen, onToggle }: CollapsibleSectionProps) => {
   return (
     <motion.div
       id={id}
@@ -128,11 +126,34 @@ const CollapsibleSection = ({ title, icon: Icon, content, id, isOpen, onToggle }
   );
 };
 
-export default function Tjenester() {
-  const [openSections, setOpenSections] = useState(new Set());
-  const [openSubSections, setOpenSubSections] = useState(new Set());
+const handleLinkClick = (href: string, title: string) => {
+  console.log(`Clicked: ${title}, Navigating to: ${href}`);
+  const [path, hash] = href.split("#");
+  if ((path === "/tjenester" || path === "/om-oss") && hash) {
+    window.location.href = href;
+    setTimeout(() => {
+      const element = document.getElementById(hash);
+      if (element) {
+        const navbar = document.querySelector("nav");
+        const navbarHeight = navbar ? navbar.offsetHeight : 80;
+        const offset = navbarHeight + 20;
+        const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        window.scrollTo({
+          top: elementPosition - offset,
+          behavior: "smooth",
+        });
+      }
+    }, 600); // Delay to allow page navigation to complete
+  } else {
+    window.location.href = href;
+  }
+};
 
-  const toggleSection = (id) => {
+export default function Tjenester() {
+  const [openSections, setOpenSections] = useState(new Set<string>());
+  const [openSubSections, setOpenSubSections] = useState(new Set<string>());
+
+  const toggleSection = (id: string) => {
     setOpenSections((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
@@ -159,7 +180,7 @@ export default function Tjenester() {
     });
   };
 
-  const toggleSubSection = (id) => {
+  const toggleSubSection = (id: string) => {
     setOpenSubSections((prev) => {
       const newSet = new Set(prev);
       if (newSet.has(id)) {
@@ -209,13 +230,14 @@ export default function Tjenester() {
         <div className="grid gap-6 md:grid-cols-2">
           <div>
             <p>
-            Byggekontroll bør benyttes i et hvert enkelt prosjekt der det kjøpes håndverkertjenester.
-            Vår kontroll vil lett kunne tilpasses ethvert prosjekt og utføres som eksternkontroll. Denne kontrollen vil ikke erstatte det kontrollansvaret som allerede ligger hos entreprenør eller byggherre gjennom avtaler eller pålagt ved søknadsmessig arbeid. Kontrollen vil være en frivillig tjeneste og et supplement til allerede pålagt kontroll fra entreprenør.            </p>
-            <p className="mt-4">
-            Ved vår kontroll vil vi kunne påse at inngåtte avtaler følges og at partene utfører arbeidet innenfor gitte standarder og normale utførelsesmetoder.
+              Byggekontroll bør benyttes i et hvert enkelt prosjekt der det kjøpes håndverkertjenester.
+              Vår kontroll vil lett kunne tilpasses ethvert prosjekt og utføres som eksternkontroll. Denne kontrollen vil ikke erstatte det kontrollansvaret som allerede ligger hos entreprenør eller byggherre gjennom avtaler eller pålagt ved søknadsmessig arbeid. Kontrollen vil være en frivillig tjeneste og et supplement til allerede pålagt kontroll fra entreprenør.
             </p>
             <p className="mt-4">
-            Vårt oppdrag vil kunne avtales for hvert enkelt prosjekt og bør startes allerede ved kontraktsinngåelsen.
+              Ved vår kontroll vil vi kunne påse at inngåtte avtaler følges og at partene utfører arbeidet innenfor gitte standarder og normale utførelsesmetoder.
+            </p>
+            <p className="mt-4">
+              Vårt oppdrag vil kunne avtales for hvert enkelt prosjekt og bør startes allerede ved kontraktsinngåelsen.
             </p>
           </div>
           <div>
@@ -229,7 +251,6 @@ export default function Tjenester() {
               <li>Vi foretar kontroll ved rehabilitering og utbygging i borettslag.</li>
               <li>Vi foretar kontroll ved reparasjoner og gjenoppføring etter byggeskader.</li>
             </ul>
-       
           </div>
         </div>
       ),
@@ -301,7 +322,7 @@ export default function Tjenester() {
                     Når uhellet er ute og boligen er blitt skadet som følge av brudd på trykkvannsrør eller avløp kalles dette for en forsikringsskade. Skader på boliger og eiendom som vil variere, men skader som skyldes vann er kostbare og til dels tidkrevende å reparere.
                   </p>
                   <p className="mt-4">
-                    Vann trenger fort inn i konstruksjon og medfører av denne må åpnes for kontroll og uttørking som kan ta lang tid.
+                    Vann trenger fort inn i konstruksjon og medfører at denne må åpnes for kontroll og uttørking som kan ta lang tid.
                   </p>
                   <p className="mt-4">
                     Om de nødvendige sikringstiltak straks igangsettes vil følgeskader begrenses. Har derimot lekkasjen vært tilstede over lengre tid før denne oppdages vil det med stor sannsynlighet allerede ha dannet seg mugg, sopp og kanskje råteangrep i konstruksjonen.
@@ -422,7 +443,6 @@ export default function Tjenester() {
           <p className="mt-4">
             Byggebistand Troms kan utføre skadeskjønn. Vi har nødvendig opplæring i vilkår, faglig bakgrunn og har 15 års erfaring på området skadeskjønn.
           </p>
-          <p className="mt-4"></p>
         </div>
       ),
     },
@@ -451,7 +471,6 @@ export default function Tjenester() {
           <p className="mt-4">
             Er boligen delvis fornyet vil kjøper lett kunne forvente at disse deler tilfredsstiller nye forskrifter om ikke annet er nevnt i salgsprospekt.
           </p>
-          <p className="mt-4"></p>
         </div>
       ),
     },
@@ -489,8 +508,6 @@ export default function Tjenester() {
           <p className="mt-4">
             Vi kan om ønskelig utføre den teknisk byggekontroll samtidig ved våre besøk på bygget der dette avtales.
           </p>
-          <p className="mt-4"></p>
-          <p className="mt-4"></p>
         </div>
       ),
     },
@@ -523,7 +540,6 @@ export default function Tjenester() {
             <p className="mt-4">
               De er hjertelig velkommen til en samtale om dine planer.
             </p>
-            <p className="mt-4"></p>
           </div>
           <div className="flex justify-center md:justify-end">
             <img
@@ -552,7 +568,6 @@ export default function Tjenester() {
             <p className="mt-4">
               Ved egne (byggherre) prosjekt som enkle søknadsmessige arbeider kan vi også foreta kontroll av prosjektering (KPR), samt kontroll av utførelsen som tilleggstjeneste på byggeplass (KUT).
             </p>
-            <p className="mt-4"></p>
           </div>
           <div className="flex justify-center md:justify-end">
             <img
@@ -575,7 +590,7 @@ export default function Tjenester() {
             Vi tilbyr også våre kunder bistand over telefon.
           </p>
           <p className="mt-4">
-            telephoneEn betalt samtale i forkant av en ønsket befaring kan også være tilstrekkelig for svar på Deres spørsmål.
+            En betalt samtale i forkant av en ønsket befaring kan også være tilstrekkelig for svar på Deres spørsmål.
           </p>
           <p className="mt-4">
             Vi kan svare på spørsmål og gi råd av byggteknisk karakter.
@@ -586,7 +601,6 @@ export default function Tjenester() {
           <p className="mt-4">
             Et telefonmøte med varighet inntil 15 minutter (kr 450) blir kreditert om videre oppdrag avtales.
           </p>
-          <p className="mt-4"></p>
         </div>
       ),
     },
@@ -609,7 +623,6 @@ export default function Tjenester() {
           <p className="mt-4">
             Vår rådgivningstjeneste omfatter også telefonbistand.
           </p>
-          <p className="mt-4"></p>
         </div>
       ),
     },
@@ -679,15 +692,15 @@ export default function Tjenester() {
             className="mt-8"
           >
             <Link
-  href="/om-oss#kontakt-oss"
-  onClick={(e) => {
-    e.preventDefault();
-    handleLinkClick("/om-oss#kontakt-oss", "Kontakt oss");
-  }}
-  className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
->
-  Kontakt oss <ChevronRightIcon className="w-9 h-9 ml-4" />
-</Link>
+              href="/om-oss#kontakt-oss"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick("/om-oss#kontakt-oss", "Kontakt oss");
+              }}
+              className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
+            >
+              Kontakt oss <ChevronRightIcon className="w-9 h-9 ml-4" />
+            </Link>
           </motion.div>
         </Container>
       </section>

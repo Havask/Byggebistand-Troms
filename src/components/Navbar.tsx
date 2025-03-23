@@ -6,11 +6,13 @@ import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
 import { motion } from "framer-motion";
 
 export const Navbar = () => {
+  const basePath = "/Byggebistand-Troms"; // Add basePath for production
+
   const navigation = [
-    { name: "Forside", href: "/" },
-    { name: "Tjenester", href: "/tjenester" },
-    { name: "Priser", href: "/priser" },
-    { name: "Om oss", href: "/om-oss" },
+    { name: "Forside", href: `${basePath}/` }, // Include basePath in href
+    { name: "Tjenester", href: `${basePath}/tjenester` }, // Include basePath in href
+    { name: "Priser", href: `${basePath}/priser` }, // Include basePath in href
+    { name: "Om oss", href: `${basePath}/om-oss` }, // Include basePath in href
   ];
 
   const [isOpen, setIsOpen] = useState(false);
@@ -21,10 +23,10 @@ export const Navbar = () => {
     <nav className="w-full bg-white dark:bg-gray-900 shadow-lg fixed top-0 z-50">
       <div className="container mx-auto flex items-center justify-between p-6 lg:p-8">
         {/* Logo */}
-        <Link href="/">
+        <Link href={`${basePath}/`}> {/* Include basePath in href */}
           <span className="flex items-center">
             <Image
-              src="/img/logo1.png"
+              src={`${basePath}/img/logo1.png`} // Include basePath in src
               width={250} // Adjusted for better balance
               height={250}
               alt="Logo"
