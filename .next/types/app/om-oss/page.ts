@@ -1,4 +1,4 @@
-// File: /Users/havardskjaerstein/Documents/Byggebistand-Troms/src/app/om-oss/page.jsx
+// File: /Users/havardskjaerstein/Desktop/Byggebistand-Troms/src/app/om-oss/page.jsx
 import * as entry from '../../../../src/app/om-oss/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

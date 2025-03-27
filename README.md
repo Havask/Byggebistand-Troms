@@ -1,65 +1,21 @@
-<p align="center">
- <a href="https://web3templates.com/?ref=nextly_github_logo">
- <img src="https://user-images.githubusercontent.com/1884712/132941531-0fdd7acf-47ca-424e-b77f-1fab2e372a37.png" alt="W3T" width="100" height="41"/>
- </a> 
- <br>
- <br>
-</p>
+# Byggebistand Troms Website
 
-# Nextly - Landing Page Template with Next.js & Tailwind CSS
+Welcome to the official repository for the Byggebistand Troms website, hosted at [https://havask.github.io/Byggebistand-Troms/](https://havask.github.io/Byggebistand-Troms/). This project serves as a digital presence for Byggebistand Troms, providing information and services related to construction assistance, building consultancy, and related offerings in the Troms region of Norway.
 
-Nextly is a free landing page & marketing website template for  startups and indie projects. Its built with Next.js & TailwindCSS.
-And its completely open-source.
- 
-![image](https://user-images.githubusercontent.com/1884712/121497169-03228680-c990-11eb-975a-e77fddc43de0.png)
+## Overview
 
-## How to use
+This is a static website built to showcase the services, contact details, and expertise of Byggebistand Troms. It is deployed via GitHub Pages and designed to be lightweight, responsive, and user-friendly.
 
-Click on the [Use Template](https://github.com/surjithctly/nextly-template/generate) button on this page to clone this respository to your github account. Or you can also clone this respository using terminal or bash. 
+## Features
 
-### 1\. Clone this Repository
+- **Service Listings**: Detailed descriptions of construction-related services offered by Byggebistand Troms.
+- **Contact Information**: Easy access to get in touch with the team.
+- **Responsive Design**: Optimized for viewing on desktop, tablet, and mobile devices.
+- **Simple Navigation**: Intuitive layout for users to find information quickly.
 
-```bash
-git clone https://github.com/surjithctly/nextly-template.git
-```
+## Technologies Used
 
-### 2\. Navigate to the directory
-
-```
-cd nextly-template
-```
-
-### 3\. Install dependencies
-
-```
-yarn install
-# or
-npm install
-```
-
-### 5\. Run Dev Server
-
-```
-yarn dev
-# or
-npm run dev
-```
-
-## Deploy with Vercel
-
-Deploy this template using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/surjithctly/nextly-template&project-name=nextly-template&repository-name=nextly-template)
-
-
-## Author
-
-Surjith S M ( [@surjithctly](https://surjithctly.in/) )
-
----
-
-[![image](https://www.datocms-assets.com/31049/1618983297-powered-by-vercel.svg)](https://vercel.com/?utm_source=web3templates&utm_campaign=oss)
-
-
-
-
+- **HTML5**: Structure of the website.
+- **CSS3**: Styling and responsive design.
+- **JavaScript**: (If applicable, for interactivity—assumed based on typical GitHub Pages projects).
+- **GitHub Pages**: Hosting and deployment.

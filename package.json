@@ -9,7 +9,7 @@
     "start": "next start",
     "lint": "next lint",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d out"
+    "deploy": "rimraf out && next build && touch out/.nojekyll && gh-pages --dotfiles --dist out"
   },
   "repository": {
     "type": "git",
@@ -37,11 +37,12 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "autoprefixer": "^10.4.21",
     "eslint": "^8",
     "eslint-config-next": "14.2.3",
     "gh-pages": "^6.3.0",
-    "postcss": "^8",
-    "tailwindcss": "^3.4.1",
+    "postcss": "^8.5.3",
+    "tailwindcss": "^3.4.17",
     "typescript": "^5"
   }
 }

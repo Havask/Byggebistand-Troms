@@ -3,12 +3,6 @@ import Link from "next/link";
 import Image from "next/image";
 import React from "react";
 import { Container } from "@/components/Container";
-import { motion } from "framer-motion";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
 
 export function Footer() {
   const navigation = [
@@ -23,23 +17,17 @@ export function Footer() {
       <Container>
         <div className="grid max-w-screen-xl grid-cols-1 gap-8 pt-12 pb-8 mx-auto lg:grid-cols-2">
           {/* Logo & Description Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="lg:col-span-1"
-          >
+          <div className="lg:col-span-1">
             <Link href="/" className="flex items-center space-x-3">
               <Image
-                src="/img/logo1.png"
+                src="/Byggebistand-Troms/img/logo1.png"
                 alt="Byggebistand Troms Logo"
                 width={120}
                 height={120}
                 className="w-28 h-auto transition-transform duration-300 hover:scale-105"
               />
             </Link>
-         
+
             {/* Navigation Links (Horizontal on lg+) */}
             <div className="mt-4 flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0">
               {navigation.map((item, index) => (
@@ -52,16 +40,10 @@ export function Footer() {
                 </Link>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           {/* Social Media Section */}
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeInUp}
-            className="lg:col-span-1 flex flex-col items-start lg:items-end"
-          >
+          <div className="lg:col-span-1 flex flex-col items-start lg:items-end">
             <h3 className="text-lg font-semibold text-gray-900 dark:text-white bg-clip-text bg-gradient-to-r from-[#308453] to-[#4CAF50] text-transparent">
               Følg oss
             </h3>
@@ -94,7 +76,7 @@ export function Footer() {
                 <Linkedin />
               </a>
             </div>
-          </motion.div>
+          </div>
         </div>
 
         {/* Bottom Bar */}

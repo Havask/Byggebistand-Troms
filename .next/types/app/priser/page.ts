@@ -1,4 +1,4 @@
-// File: /Users/havardskjaerstein/Documents/Byggebistand-Troms/src/app/priser/page.tsx
+// File: /Users/havardskjaerstein/Desktop/Byggebistand-Troms/src/app/priser/page.tsx
 import * as entry from '../../../../src/app/priser/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

@@ -37,9 +37,8 @@ const clients = [
 ];
 
 export default function Home() {
-  const basePath = "/Byggebistand-Troms"; // Add basePath for production
+  const basePath = "";
 
-  // Type the ref as HTMLDivElement
   const headerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -57,16 +56,16 @@ export default function Home() {
   }, []);
 
   const sectionLinks = [
-    { name: "Byggekontroll", href: `${basePath}/tjenester#byggekontroll` }, // Include basePath in href
-    { name: "Taksering", href: `${basePath}/tjenester#taksering` }, // Include basePath in href
-    { name: "Røykvarslerdagen", href: `${basePath}/tjenester#roykvarslerdagen` }, // Include basePath in href
-    { name: "Skjønn", href: `${basePath}/tjenester#skjonn` }, // Include basePath in href
-    { name: "Overlevering", href: `${basePath}/tjenester#overlevering` }, // Include basePath in href
-    { name: "Byggelånskontroll", href: `${basePath}/tjenester#byggelanskontroll` }, // Include basePath in href
-    { name: "Prosjekt- og Byggeledelse", href: `${basePath}/tjenester#prosjekt-og-byggeledelse` }, // Include basePath in href
-    { name: "Byggesøknader", href: `${basePath}/tjenester#byggesoknader` }, // Include basePath in href
-    { name: "Telefonbistand", href: `${basePath}/tjenester#telefonbistand` }, // Include basePath in href
-    { name: "Rådgivning", href: `${basePath}/tjenester#radgivning` }, // Include basePath in href
+    { name: "Byggekontroll", href: `/Byggebistand-Troms/tjenester#byggekontroll` },
+    { name: "Taksering", href: `/Byggebistand-Troms/tjenester#taksering` },
+    { name: "Røykvarslerdagen", href: `/Byggebistand-Troms/tjenester#roykvarslerdagen` },
+    { name: "Skjønn", href: `/Byggebistand-Troms/tjenester#skjonn` },
+    { name: "Overlevering", href: `/Byggebistand-Troms/tjenester#overlevering` },
+    { name: "Byggelånskontroll", href: `/Byggebistand-Troms/tjenester#byggelanskontroll` },
+    { name: "Prosjekt- og Byggeledelse", href: `/Byggebistand-Troms/tjenester#prosjekt-og-byggeledelse` },
+    { name: "Byggesøknader", href: `/Byggebistand-Troms/tjenester#byggesoknader` },
+    { name: "Telefonbistand", href: `/Byggebistand-Troms/tjenester#telefonbistand` },
+    { name: "Rådgivning", href: `/Byggebistand-Troms/tjenester#radgivning` },
   ];
 
   const handleLinkClick = (href: string, title: string) => {
@@ -86,7 +85,7 @@ export default function Home() {
             behavior: "smooth",
           });
         }
-      }, 600); // Delay to allow page navigation to complete
+      }, 600);
     } else {
       window.location.href = href;
     }
@@ -97,7 +96,7 @@ export default function Home() {
       <Container>
         <Hero />
 
-        {/* Services Section */}
+        {/* Services Section - ONLY CHANGE MADE HERE */}
         <section className="py-28 lg:py-40 relative z-20 -mt-28">
           <div
             ref={headerRef}
@@ -107,20 +106,20 @@ export default function Home() {
               className="text-6xl lg:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-400 tracking-tighter drop-shadow-2xl"
               style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
             >
-              Våre Tjenester
+              Våre tjenester
             </h2>
             <p className="mt-6 text-xl lg:text-2xl text-gray-700 dark:text-gray-100 max-w-3xl mx-auto font-light leading-relaxed">
-              Skreddersydde løsninger i harmoni med fremtiden.
+              Skreddersydde løsninger for fremtiden.
             </p>
           </div>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-6 lg:px-0 perspective-1000">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 px-6 lg:px-8 perspective-1000">
             {services.map((service, index) => (
               <div
                 key={index}
                 className="bg-white/90 dark:bg-gray-900/90 backdrop-blur-2xl rounded-3xl p-8 border border-gradient-to-br from-teal-500/40 to-green-400/40 hover:border-teal-500/80 hover:scale-[1.08] hover:shadow-[0_25px_50px_rgba(0,0,0,0.2),0_0_30px_rgba(74,222,128,0.4)] transition-all duration-600 transform-gpu relative z-10"
               >
                 <Link
-                  href={sectionLinks.find((link) => link.name === service.title)?.href || `${basePath}/tjenester`} // Include basePath in href
+                  href={sectionLinks.find((link) => link.name === service.title)?.href || `${basePath}/tjenester`}
                   onClick={(e) => {
                     e.preventDefault();
                     handleLinkClick(
@@ -147,8 +146,8 @@ export default function Home() {
         </section>
 
         {/* Clients Section */}
-        <section className="py-20 lg:py-28 relative z-10">
-          <div className="bg-gradient-to-r from-teal-500/15 to-green-400/15 rounded-3xl p-12 lg:p-16 shadow-2xl">
+        <section className="py-20 lg:py-28 relative z-10 flex justify-center">
+          <div className="bg-gradient-to-r from-teal-500/15 to-green-400/15 rounded-3xl p-12 lg:p-16 shadow-2xl max-w-full w-full">
             <h2
               className="text-5xl lg:text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-400 tracking-tight text-center"
               style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
@@ -158,11 +157,11 @@ export default function Home() {
             <p className="mt-6 text-lg lg:text-xl text-gray-700 dark:text-gray-100 text-center max-w-2xl mx-auto font-light">
               Sammen bygger vi en grønnere fremtid.
             </p>
-            <div className="mt-12 flex overflow-x-auto snap-x snap-mandatory gap-6 pb-6 px-4 lg:px-0 scrollbar-hidden">
+            <div className="mt-12 flex flex-wrap justify-center gap-6 pb-6 px-4">
               {clients.map((client, index) => (
                 <div
                   key={index}
-                  className="snap-center flex-shrink-0 bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl rounded-full px-8 py-4 flex items-center space-x-4 border border-green-400/30 hover:border-green-400/70 hover:scale-[1.2] hover:shadow-[0_0_20px_rgba(74,222,128,0.6)] transition-all duration-500 min-w-[260px] relative z-10"
+                  className="flex-shrink-0 bg-white/85 dark:bg-gray-900/85 backdrop-blur-xl rounded-full px-8 py-4 flex items-center space-x-4 border border-green-400/30 hover:border-green-400/70 hover:scale-[1.2] hover:shadow-[0_0_20px_rgba(74,222,128,0.6)] transition-all duration-500 min-w-[260px] relative z-10"
                 >
                   <span className="text-green-500 dark:text-green-300">
                     {React.cloneElement(client.icon, { className: "w-7 h-7" })}
@@ -192,10 +191,10 @@ export default function Home() {
             </p>
             <div className="mt-16">
               <Link
-                href={`${basePath}/om-oss#kontakt-oss`} // Include basePath in href
+                href={`${basePath}/om-oss#kontakt-oss`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(`${basePath}/om-oss#kontakt-oss`, "Kontakt oss");
+                  handleLinkClick(`/Byggebistand-Troms/om-oss#kontakt-oss`, "Kontakt oss");
                 }}
                 className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
               >
@@ -210,15 +209,15 @@ export default function Home() {
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap');
         body {
-          cursor: auto; /* Restore default cursor */
+          cursor: auto;
           overflow-x: hidden;
         }
         .scrollbar-hidden {
-          -ms-overflow-style: none; /* IE and Edge */
-          scrollbar-width: none; /* Firefox */
+          -ms-overflow-style: none;
+          scrollbar-width: none;
         }
         .scrollbar-hidden::-webkit-scrollbar {
-          display: none; /* Chrome, Safari, Opera */
+          display: none;
         }
         .perspective-1000 {
           perspective: 1000px;

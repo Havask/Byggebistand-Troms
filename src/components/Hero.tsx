@@ -1,12 +1,29 @@
 import { Container } from "@/components/Container";
-import { motion } from "framer-motion";
-
-const fadeInUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
-};
 
 export const Hero = () => {
+  const handleLinkClick = (href: string) => {
+    const [path, hash] = href.split("#");
+    if (path === "/om-oss" && hash) {
+      window.location.href = href;
+      setTimeout(() => {
+        const element = document.getElementById(hash);
+        if (element) {
+          const navbar = document.querySelector("nav");
+          const navbarHeight = navbar ? navbar.offsetHeight : 80; // Default to 80px if no navbar
+          const buffer = 40; // Consistent with Om page
+          const offset = navbarHeight + buffer;
+          const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          window.scrollTo({
+            top: elementPosition - offset,
+            behavior: "smooth",
+          });
+        }
+      }, 600); // Delay to allow page navigation
+    } else {
+      window.location.href = href;
+    }
+  };
+
   return (
     <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
       {/* Background Image with Overlay */}
@@ -20,55 +37,41 @@ export const Hero = () => {
       {/* Content */}
       <Container className="relative z-10 flex flex-col items-center justify-center text-center">
         {/* Smaller text above */}
-        <motion.p
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          className="text-xl font-medium text-white sm:text-2xl lg:text-3xl bg-clip-text bg-gradient-to-r from-white to-gray-200 text-transparent tracking-tight font-sans"
-          style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+        <p
+          className="text-xl font-medium text-white sm:text-2xl lg:text-3xl bg-clip-text bg-gradient-to-r from-white to-gray-200 text-transparent tracking-tight font-sans animate-fade-in"
         >
           Byggebistand Troms
-        </motion.p>
+        </p>
 
         {/* Main title in the middle - Sophisticated style */}
-        <motion.h1
-          initial="hidden"
-          animate="visible"
-          variants={fadeInUp}
-          className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-sans"
-          style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+        <h1
+          className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-sans animate-fade-in"
         >
           Sertifisert taksering i Troms
-        </motion.h1>
+        </h1>
 
         {/* Text and Buttons */}
         <div className="mt-24 max-w-3xl space-y-16 px-4 lg:px-8">
           {/* Additional Text */}
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            className="text-lg text-gray-100 sm:text-xl lg:text-2xl opacity-90 font-sans"
-            style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+          <p
+            className="text-lg text-gray-100 sm:text-xl lg:text-2xl opacity-90 font-sans animate-fade-in"
           >
             Daglig leder er takstingeniør Oddvar R. Skjærstein som har både bred og lang erfaring innenfor fagene firmaet representerer.
-          </motion.p>
+          </p>
 
           {/* Call-to-Action Button */}
-          <motion.div
-            initial="hidden"
-            animate="visible"
-            variants={fadeInUp}
-            className="mt-20 flex flex-col gap-6 sm:flex-row sm:justify-center"
-          >
+          <div className="mt-20 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
             <a
-              href="#"
-              className="w-full transform rounded-full bg-gradient-to-r from-[#308453] to-[#4CAF50] px-8 py-4 text-lg font-semibold text-white shadow-lg transition-all duration-300 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 sm:w-auto font-sans"
-              style={{ fontFamily: "'Inter', 'Poppins', sans-serif" }}
+              href="/om-oss#kontakt-oss"
+              onClick={(e) => {
+                e.preventDefault();
+                handleLinkClick("/Byggebistand-Troms/om-oss#kontakt-oss");
+              }}
+              className="w-48 transform rounded-full bg-gradient-to-r from-[#308453] to-[#4CAF50] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 sm:w-auto sm:px-8 sm:py-4 sm:text-lg sm:hover:scale-125 sm:hover:from-[#3A9E63] sm:hover:to-[#5CCF60] sm:hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 font-sans animate-fade-in"
             >
               Kontakt Oss
             </a>
-          </motion.div>
+          </div>
         </div>
       </Container>
     </div>

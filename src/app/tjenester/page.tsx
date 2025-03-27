@@ -1,7 +1,6 @@
 "use client";
 import Link from "next/link";
 import { Container } from "@/components/Container";
-import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
   ChevronDownIcon,
@@ -22,30 +21,17 @@ import {
   CloudIcon,
 } from "@heroicons/react/24/solid";
 
-// Animation Variants
-const fadeIn = {
-  hidden: { opacity: 0, y: 20 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      duration: 0.5,
-      ease: "easeOut",
-    },
-  },
-};
-
 // Define props interface for SubCollapsible
 interface SubCollapsibleProps {
   title: string;
-  icon: React.ElementType; // For Heroicons or similar components
+  icon: React.ElementType;
   content: string | React.ReactNode;
   id: string;
   isOpen: boolean;
   onToggle: () => void;
 }
 
-// SubCollapsible Component with typed props
+// SubCollapsible Component
 const SubCollapsible = ({ title, icon: Icon, content, id, isOpen, onToggle }: SubCollapsibleProps) => {
   if (!Icon) {
     return <div>Feil: Ikonet for "{title}" er undefined</div>;
@@ -54,25 +40,25 @@ const SubCollapsible = ({ title, icon: Icon, content, id, isOpen, onToggle }: Su
   return (
     <div className="border-b border-teal-500/20 dark:border-teal-900/20 last:border-b-0">
       <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between py-4 px-6 text-left bg-gradient-to-br from-teal-50/70 to-green-50/70 dark:from-teal-950/70 dark:to-green-950/70 backdrop-blur-lg hover:from-teal-100/80 hover:to-green-100/80 dark:hover:from-teal-900/80 dark:hover:to-green-900/80 transition-all duration-500 rounded-xl shadow-md hover:shadow-lg transform-gpu"
+        onClick={() => {
+          console.log(`SubCollapsible button clicked: ${id}`);
+          onToggle();
+        }}
+        className="w-full flex items-center justify-between py-4 px-6 text-left bg-gradient-to-br from-teal-50/70 to-green-50/70 dark:from-teal-950/70 dark:to-green-950/70 hover:from-teal-100/80 hover:to-green-100/80 dark:hover:from-teal-900/80 dark:hover:to-green-900/80 transition-colors duration-200 rounded-xl shadow-md"
       >
         <div className="flex items-center gap-4">
           <Icon className="w-6 h-6 text-teal-500 dark:text-teal-300" />
           <h3 className="text-lg font-semibold text-gray-900 dark:text-white tracking-tight">{title}</h3>
         </div>
         <ChevronDownIcon
-          className={`w-5 h-5 text-teal-500 dark:text-teal-300 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-5 h-5 text-teal-500 dark:text-teal-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-        transition={{ duration: 0.3, ease: "easeInOut" }}
-        className="overflow-hidden"
+      <div
+        className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? "max-h-[1000px] opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="px-6 py-5 text-gray-600 dark:text-gray-300 leading-relaxed bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm rounded-b-xl">{content}</div>
-      </motion.div>
+        <div className="px-6 py-5 text-gray-600 dark:text-gray-300 leading-relaxed bg-white/50 dark:bg-gray-900/50 rounded-b-xl">{content}</div>
+      </div>
     </div>
   );
 };
@@ -87,42 +73,39 @@ interface CollapsibleSectionProps {
   onToggle: () => void;
 }
 
-// Collapsible Section Component with typed props
+// CollapsibleSection Component
 const CollapsibleSection = ({ title, icon: Icon, content, id, isOpen, onToggle }: CollapsibleSectionProps) => {
+  console.log(`CollapsibleSection ${id} isOpen: ${isOpen}`);
   return (
-    <motion.div
+    <div
       id={id}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true }}
-      variants={fadeIn}
-      className="bg-gradient-to-br from-teal-50/80 to-green-50/80 dark:from-teal-950/80 dark:to-green-950/80 backdrop-blur-2xl rounded-3xl shadow-xl border border-teal-500/30 dark:border-teal-900/30 overflow-hidden transition-all duration-600 hover:shadow-[0_25px_50px_rgba(0,0,0,0.2),0_0_30px_rgba(74,222,128,0.4)] hover:scale-[1.02] transform-gpu perspective-1000"
+      className="bg-teal-50/80 dark:bg-teal-950/80 rounded-3xl shadow-xl border border-teal-500/30 dark:border-teal-900/30 overflow-hidden"
     >
       <button
-        onClick={onToggle}
-        className="w-full flex items-center justify-between p-6 text-left bg-gradient-to-r from-teal-500/20 to-green-500/20 dark:from-teal-900/30 dark:to-green-900/30 hover:from-teal-500/30 hover:to-green-500/30 dark:hover:from-teal-900/40 dark:hover:to-green-900/40 transition-all duration-500"
+        onClick={() => {
+          console.log(`CollapsibleSection button clicked: ${id}`);
+          onToggle();
+        }}
+        className="w-full flex items-center justify-between p-6 text-left bg-gradient-to-r from-teal-500/20 to-green-500/20 dark:from-teal-900/30 dark:to-green-900/30 hover:from-teal-500/30 hover:to-green-500/30 dark:hover:from-teal-900/40 dark:hover:to-green-900/40 transition-colors duration-200"
       >
         <div className="flex items-center gap-5">
-          <div className="p-4 bg-gradient-to-br from-teal-500 to-green-400 rounded-full shadow-lg hover:shadow-[0_0_15px_rgba(74,222,128,0.8)] transition-all duration-300">
+          <div className="p-4 bg-gradient-to-br from-teal-500 to-green-400 rounded-full shadow-lg">
             <Icon className="w-7 h-7 text-white" />
           </div>
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tighter bg-clip-text bg-gradient-to-r from-teal-600 to-green-500 hover:from-teal-500 hover:to-green-400 transition-colors duration-300">
+          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tighter">
             {title}
           </h2>
         </div>
         <ChevronDownIcon
-          className={`w-6 h-6 text-teal-500 dark:text-teal-300 transition-transform duration-300 ${isOpen ? "rotate-180" : ""}`}
+          className={`w-6 h-6 text-teal-500 dark:text-teal-300 transition-transform duration-200 ${isOpen ? "rotate-180" : ""}`}
         />
       </button>
-      <motion.div
-        initial={{ height: 0, opacity: 0 }}
-        animate={isOpen ? { height: "auto", opacity: 1 } : { height: 0, opacity: 0 }}
-        transition={{ duration: 0.4, ease: "easeInOut" }}
-        className="overflow-hidden"
+      <div
+        className={`overflow-hidden transition-all duration-200 ease-in-out ${isOpen ? "max-h-[2000px] opacity-100" : "max-h-0 opacity-0"}`}
       >
-        <div className="p-6 text-gray-600 dark:text-gray-300 leading-relaxed bg-white/60 dark:bg-gray-900/60 backdrop-blur-md">{content}</div>
-      </motion.div>
-    </motion.div>
+        <div className="p-6 text-gray-600 dark:text-gray-300 leading-relaxed bg-white/60 dark:bg-gray-900/60">{content}</div>
+      </div>
+    </div>
   );
 };
 
@@ -136,59 +119,63 @@ const handleLinkClick = (href: string, title: string) => {
       if (element) {
         const navbar = document.querySelector("nav");
         const navbarHeight = navbar ? navbar.offsetHeight : 80;
-        const offset = navbarHeight + 20;
+        const offset = navbarHeight + 100;
         const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+        console.log(`Scrolling to ${hash}: navbarHeight=${navbarHeight}, offset=${offset}, position=${elementPosition - offset}`);
         window.scrollTo({
           top: elementPosition - offset,
           behavior: "smooth",
         });
+      } else {
+        console.log(`Element with ID ${hash} not found`);
       }
-    }, 600); // Delay to allow page navigation to complete
+    }, 600);
   } else {
     window.location.href = href;
   }
 };
 
 export default function Tjenester() {
-  const [openSections, setOpenSections] = useState(new Set<string>());
-  const [openSubSections, setOpenSubSections] = useState(new Set<string>());
+  const [openSections, setOpenSections] = useState<string[]>([]);
+  const [openSubSections, setOpenSubSections] = useState<string[]>([]);
 
   const toggleSection = (id: string) => {
+    console.log(`toggleSection called for: ${id}`);
     setOpenSections((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
+      const isOpen = prev.includes(id);
+      console.log(`Current openSections: ${prev}, isOpen: ${isOpen}`);
+      if (isOpen) {
+        return prev.filter((sectionId) => sectionId !== id);
       } else {
         const element = document.getElementById(id);
         if (element) {
           const navbar = document.querySelector("nav");
           const navbarHeight = navbar ? navbar.offsetHeight : 80;
-          const buffer = 40;
+          const buffer = 100;
           const offset = navbarHeight + buffer;
           const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          console.log(`Scrolling to ${id}: navbarHeight=${navbarHeight}, offset=${offset}, position=${elementPosition - offset}`);
           window.scrollTo({
             top: elementPosition - offset,
             behavior: "smooth",
           });
           setTimeout(() => {
-            newSet.add(id);
-            setOpenSections(new Set(newSet));
+            setOpenSections((prev) => [...prev, id]);
+            console.log(`Section ${id} opened after scroll`);
           }, 500);
+          return prev;
         }
+        return [...prev, id];
       }
-      return newSet;
     });
   };
 
   const toggleSubSection = (id: string) => {
+    console.log(`toggleSubSection called for: ${id}`);
     setOpenSubSections((prev) => {
-      const newSet = new Set(prev);
-      if (newSet.has(id)) {
-        newSet.delete(id);
-      } else {
-        newSet.add(id);
-      }
-      return newSet;
+      const isOpen = prev.includes(id);
+      console.log(`Current openSubSections: ${prev}, isOpen: ${isOpen}`);
+      return isOpen ? prev.filter((subId) => subId !== id) : [...prev, id];
     });
   };
 
@@ -197,20 +184,30 @@ export default function Tjenester() {
       const { hash } = window.location;
       if (hash) {
         const id = hash.replace("#", "");
+        console.log(`Hash change detected: ${id}`);
         const element = document.getElementById(id);
         if (element) {
           const navbar = document.querySelector("nav");
           const navbarHeight = navbar ? navbar.offsetHeight : 80;
-          const buffer = 40;
+          const buffer = 100;
           const offset = navbarHeight + buffer;
           const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+          console.log(`Auto-scrolling to ${id}: navbarHeight=${navbarHeight}, offset=${offset}, position=${elementPosition - offset}`);
           window.scrollTo({
             top: elementPosition - offset,
             behavior: "smooth",
           });
           setTimeout(() => {
-            setOpenSections((prev) => new Set(prev).add(id));
+            setOpenSections((prev) => {
+              if (!prev.includes(id)) {
+                console.log(`Opening section ${id} from hash`);
+                return [...prev, id];
+              }
+              return prev;
+            });
           }, 500);
+        } else {
+          console.log(`Element with ID ${id} not found on hash change`);
         }
       }
     };
@@ -309,7 +306,7 @@ export default function Tjenester() {
                   </p>
                 </div>
               }
-              isOpen={openSubSections.has("verditaksering")}
+              isOpen={openSubSections.includes("verditaksering")}
               onToggle={() => toggleSubSection("verditaksering")}
             />
             <SubCollapsible
@@ -343,7 +340,7 @@ export default function Tjenester() {
                   </ul>
                 </div>
               }
-              isOpen={openSubSections.has("vannskader")}
+              isOpen={openSubSections.includes("vannskader")}
               onToggle={() => toggleSubSection("vannskader")}
             />
             <SubCollapsible
@@ -366,7 +363,7 @@ export default function Tjenester() {
                   </p>
                 </div>
               }
-              isOpen={openSubSections.has("brannskader")}
+              isOpen={openSubSections.includes("brannskader")}
               onToggle={() => toggleSubSection("brannskader")}
             />
             <SubCollapsible
@@ -383,7 +380,7 @@ export default function Tjenester() {
                   </p>
                 </div>
               }
-              isOpen={openSubSections.has("harverk")}
+              isOpen={openSubSections.includes("harverk")}
               onToggle={() => toggleSubSection("harverk")}
             />
             <SubCollapsible
@@ -408,13 +405,13 @@ export default function Tjenester() {
                   </p>
                   <p className="mt-4">
                     Naturskadeforsikringen knytter seg alltid til en brannforsikring. Ytterligere informasjon kan leses hos{" "}
-                    <a href="https://naturskade.no" className="text-teal-500 underline hover:text-teal-400 transition-colors duration-300">
+                    <a href="https://naturskade.no" className="text-teal-500 underline hover:text-teal-400 transition-colors duration-200">
                       naturskade.no
                     </a>.
                   </p>
                 </div>
               }
-              isOpen={openSubSections.has("naturskader")}
+              isOpen={openSubSections.includes("naturskader")}
               onToggle={() => toggleSubSection("naturskader")}
             />
           </div>
@@ -543,9 +540,9 @@ export default function Tjenester() {
           </div>
           <div className="flex justify-center md:justify-end">
             <img
-              src="/img/forsidebilde.jpg"
+              src="/Byggebistand-Troms/img/forsidebilde.jpg"
               alt="Prosjekt- og Byggeledelse illustrasjon"
-              className="rounded-xl shadow-lg w-full max-w-[180px] md:max-w-[220px] hover:scale-105 transition-transform duration-300"
+              className="rounded-xl shadow-lg w-full max-w-[180px] md:max-w-[220px]"
             />
           </div>
         </div>
@@ -571,9 +568,9 @@ export default function Tjenester() {
           </div>
           <div className="flex justify-center md:justify-end">
             <img
-              src="/img/byggsok.png"
+              src="/Byggebistand-Troms/img/byggsok.png"
               alt="Byggesøknader illustrasjon"
-              className="rounded-xl shadow-lg w-full max-w-[180px] md:max-w-[220px] hover:scale-105 transition-transform duration-300"
+              className="rounded-xl shadow-lg w-full max-w-[180px] md:max-w-[220px]"
             />
           </div>
         </div>
@@ -630,40 +627,42 @@ export default function Tjenester() {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-teal-50 via-green-50 to-gray-50 dark:from-teal-950 dark:via-green-950 dark:to-gray-900 font-sans overflow-x-hidden">
-      <section className="relative min-h-[400px] pt-32 pb-24 bg-gradient-to-br from-teal-600 to-green-500 text-white overflow-hidden flex items-center justify-center">
-        <Container className="relative z-10 text-center pt-10">
-          <motion.h1
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="text-5xl md:text-7xl font-extrabold tracking-tighter text-white drop-shadow-[0_4px_12px_rgba(0,0,0,0.3)]"
+      {/* Hero Section */}
+      <section className="relative min-h-[300px] sm:min-h-[400px] pt-20 sm:pt-28 pb-12 sm:pb-16 overflow-hidden flex items-center justify-center">
+        <div className="absolute top-[80px] left-0 right-0 z-20 text-center bg-gradient-to-b from-teal-50/70 to-transparent dark:from-teal-950/70 py-10 sm:py-14 rounded-b-3xl shadow-lg">
+          <h1
+            className="text-6xl sm:text-7xl md:text-8xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-teal-500 to-green-400 tracking-tighter"
             style={{ fontFamily: "'Inter Variable', 'Poppins', sans-serif" }}
           >
             Våre Tjenester
-          </motion.h1>
-          <motion.p
-            initial="hidden"
-            animate="visible"
-            variants={fadeIn}
-            className="mt-6 text-xl md:text-2xl max-w-3xl mx-auto font-light leading-relaxed text-white/90 drop-shadow-md"
-          >
+          </h1>
+          <p className="mt-6 text-xl sm:text-2xl md:text-3xl max-w-4xl mx-auto font-light leading-relaxed text-gray-700 dark:text-gray-100 px-4">
             Gode løsninger for ditt prosjekt
-          </motion.p>
-        </Container>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(255,255,255,0.3),transparent)] opacity-50" />
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(74,222,128,0.25),transparent)] animate-cinematicPulse" />
+          </p>
+        </div>
+        {/* Subtle decorative elements */}
+        <div className="absolute inset-0 bg          bg-[radial-gradient(circle_at_center,rgba(74,222,128,0.05),transparent)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(74,222,128,0.03),transparent)]" />
+        <div className="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-teal-50 to-transparent dark:from-teal-950" />
+        {/* Geometric pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-1/4 left-1/4 w-32 h-32 rounded-full bg-green-500 mix-blend-multiply filter blur-xl" />
+          <div className="absolute top-1/3 right-1/4 w-40 h-40 rounded-full bg-green-400 mix-blend-multiply filter blur-xl" />
+          <div className="absolute bottom-1/4 right-1/3 w-28 h-28 rounded-full bg-green-600 mix-blend-multiply filter blur-xl" />
+        </div>
       </section>
 
-      <section className="py-16">
+      {/* Services Section */}
+      <section className="py-8 sm:py-12">
         <Container>
-          <div className="max-w-4xl mx-auto space-y-6 perspective-1000">
+          <div className="max-w-4xl mx-auto space-y-6">
             {sectionLinks.map((section) => (
               <CollapsibleSection
                 key={section.id}
                 title={section.name}
                 icon={section.icon}
                 id={section.id}
-                isOpen={openSections.has(section.id)}
+                isOpen={openSections.includes(section.id)}
                 onToggle={() => toggleSection(section.id)}
                 content={section.content}
               />
@@ -672,56 +671,30 @@ export default function Tjenester() {
         </Container>
       </section>
 
+      {/* Contact Section */}
       <section className="py-20 bg-gradient-to-br from-teal-600 to-green-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(74,222,128,0.2),transparent)] animate-cinematicPulse" />
         <Container className="text-center relative z-10">
-          <motion.p
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="mt-6 text-lg md:text-xl max-w-2xl mx-auto font-light"
-          >
+          <p className="mt-6 text-lg md:text-xl max-w-2xl mx-auto font-light">
             Ta kontakt for en uforpliktende samtale om hvordan vi kan bistå deg.
-          </motion.p>
-          <motion.div
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true }}
-            variants={fadeIn}
-            className="mt-8"
-          >
+          </p>
+          <div className="mt-8">
             <Link
               href="/om-oss#kontakt-oss"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick("/om-oss#kontakt-oss", "Kontakt oss");
+                handleLinkClick("/Byggebistand-Troms/om-oss#kontakt-oss", "Kontakt oss");
               }}
-              className="inline-flex items-center px-16 py-6 bg-gradient-to-r from-teal-500 to-green-400 text-white rounded-full font-semibold text-2xl hover:from-teal-600 hover:to-green-500 hover:shadow-[0_0_30px_rgba(74,222,128,0.9)] hover:scale-110 transition-all duration-500 shadow-2xl relative z-10"
+              className="inline-flex items-center px-16 py-6 bg-teal-500 text-white rounded-full font-semibold text-2xl hover:bg-teal-600 transition-colors duration-200 shadow-2xl"
             >
               Kontakt oss <ChevronRightIcon className="w-9 h-9 ml-4" />
             </Link>
-          </motion.div>
+          </div>
         </Container>
       </section>
 
       {/* Global Styles */}
       <style jsx global>{`
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Poppins:wght@100..900&display=swap');
-        .perspective-1000 {
-          perspective: 1000px;
-        }
-        .transform-gpu {
-          transform: translateZ(0);
-          backface-visibility: hidden;
-        }
-        @keyframes cinematicPulse {
-          0%, 100% { opacity: 0.4; transform: scale(1); }
-          50% { opacity: 0.7; transform: scale(1.02); }
-        }
-        .animate-cinematicPulse {
-          animation: cinematicPulse 8s infinite ease-in-out;
-        }
       `}</style>
     </div>
   );
