@@ -23,11 +23,11 @@ export const Navbar = () => {
         <Link href="/">
           <span className="flex items-center">
             <Image
-              src="/Byggebistand-Troms/img/logo1.png"
-              width={250}
-              height={250}
+              src="/Byggebistand-Troms/img/logo.svg"
+              width={500}  // Doubled from 250
+              height={500} // Doubled from 250
               alt="Logo"
-              className="w-48 h-auto lg:w-64 transition-transform duration-300 hover:scale-105"
+              className="w-96 h-auto lg:w-128 transition-transform duration-300 hover:scale-105" // Doubled from w-48 and lg:w-64
             />
           </span>
         </Link>

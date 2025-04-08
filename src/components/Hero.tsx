@@ -59,7 +59,7 @@ export const Hero = () => {
             Daglig leder er takstingeniør Oddvar R. Skjærstein som har både bred og lang erfaring innenfor fagene firmaet representerer.
           </p>
 
-          {/* Call-to-Action Button */}
+          {/* Call-to-Action Button - Updated to squared style with #205e38 color */}
           <div className="mt-20 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
             <a
               href="/om-oss#kontakt-oss"
@@ -67,7 +67,7 @@ export const Hero = () => {
                 e.preventDefault();
                 handleLinkClick("/Byggebistand-Troms/om-oss#kontakt-oss");
               }}
-              className="w-48 transform rounded-full bg-gradient-to-r from-[#308453] to-[#4CAF50] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 sm:w-auto sm:px-8 sm:py-4 sm:text-lg sm:hover:scale-125 sm:hover:from-[#3A9E63] sm:hover:to-[#5CCF60] sm:hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 font-sans animate-fade-in"
+              className="w-48 transform rounded-none bg-[#205e38] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 sm:w-auto sm:px-8 sm:py-4 sm:text-lg sm:hover:bg-[#1a4b2e] sm:hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 font-sans animate-fade-in"
             >
               Kontakt Oss
             </a>

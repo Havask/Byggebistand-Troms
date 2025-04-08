@@ -2,55 +2,57 @@
   "pages": {
     "/_not-found/page": [
       "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
       "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/chunks/app/_not-found/page-3c887afcb5ba4856.js"
+      "static/chunks/app/_not-found/page-ed399742f56453a2.js"
     ],
     "/layout": [
       "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
       "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/css/559730aa7aef0934.css",
-      "static/chunks/138-8cd7e5e63ff0fb9f.js",
-      "static/chunks/941-9ac460c126bb3a1c.js",
-      "static/chunks/app/layout-df9d6b453f882a8c.js"
-    ],
-    "/page": [
-      "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
-      "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/chunks/138-8cd7e5e63ff0fb9f.js",
-      "static/chunks/59-8dc09d10fbc81b48.js",
-      "static/chunks/app/page-c771b58cfe7b4804.js"
-    ],
-    "/tjenester/page": [
-      "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
-      "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/chunks/138-8cd7e5e63ff0fb9f.js",
-      "static/chunks/59-8dc09d10fbc81b48.js",
-      "static/chunks/app/tjenester/page-8cbe3cbb953bf51a.js"
-    ],
-    "/priser/page": [
-      "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
-      "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/chunks/59-8dc09d10fbc81b48.js",
-      "static/chunks/app/priser/page-7a0bd4aba0bc6f57.js"
+      "static/css/179d3e1d4892265e.css",
+      "static/chunks/648-1963ee5a3f5e753c.js",
+      "static/chunks/138-e3f3aa86a3829472.js",
+      "static/chunks/app/layout-a88b786016731795.js"
     ],
     "/om-oss/page": [
       "static/chunks/webpack-f9e717baeef85755.js",
-      "static/chunks/fd9d1056-a9d7d59acf14ef09.js",
-      "static/chunks/23-f6657b5ce2f95e72.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
       "static/chunks/main-app-5d4b45825bf4ae49.js",
-      "static/chunks/138-8cd7e5e63ff0fb9f.js",
-      "static/chunks/59-8dc09d10fbc81b48.js",
-      "static/chunks/app/om-oss/page-70e7c8929c70bd9c.js"
+      "static/chunks/648-1963ee5a3f5e753c.js",
+      "static/chunks/59-a4dee2c889cba0e4.js",
+      "static/chunks/app/om-oss/page-b8acebbdc16a4307.js"
+    ],
+    "/page": [
+      "static/chunks/webpack-f9e717baeef85755.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
+      "static/chunks/main-app-5d4b45825bf4ae49.js",
+      "static/chunks/648-1963ee5a3f5e753c.js",
+      "static/chunks/59-a4dee2c889cba0e4.js",
+      "static/chunks/138-e3f3aa86a3829472.js",
+      "static/chunks/app/page-66238119023ecfe2.js"
+    ],
+    "/priser/page": [
+      "static/chunks/webpack-f9e717baeef85755.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
+      "static/chunks/main-app-5d4b45825bf4ae49.js",
+      "static/chunks/648-1963ee5a3f5e753c.js",
+      "static/chunks/59-a4dee2c889cba0e4.js",
+      "static/chunks/app/priser/page-fc8abfd2a4659225.js"
+    ],
+    "/tjenester/page": [
+      "static/chunks/webpack-f9e717baeef85755.js",
+      "static/chunks/fd9d1056-cae6b6d631cb1118.js",
+      "static/chunks/23-836846c35fa2876b.js",
+      "static/chunks/main-app-5d4b45825bf4ae49.js",
+      "static/chunks/648-1963ee5a3f5e753c.js",
+      "static/chunks/59-a4dee2c889cba0e4.js",
+      "static/chunks/app/tjenester/page-b149aeffac34a6e5.js"
     ]
   }
 }
