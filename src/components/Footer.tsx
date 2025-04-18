@@ -18,15 +18,7 @@ export function Footer() {
         <div className="grid max-w-screen-xl grid-cols-1 gap-8 pt-12 pb-8 mx-auto lg:grid-cols-2">
           {/* Logo & Description Section */}
           <div className="lg:col-span-1">
-            <Link href="/" className="flex items-center space-x-3">
-              <Image
-                src="/Byggebistand-Troms/img/logo1.png"
-                alt="Byggebistand Troms Logo"
-                width={120}
-                height={120}
-                className="w-28 h-auto transition-transform duration-300 hover:scale-105"
-              />
-            </Link>
+
 
             {/* Navigation Links (Horizontal on lg+) */}
             <div className="mt-4 flex flex-col lg:flex-row lg:space-x-6 space-y-2 lg:space-y-0">
@@ -57,15 +49,7 @@ export function Footer() {
               >
                 <Facebook />
               </a>
-              <a
-                href="https://instagram.com/web3templates"
-                target="_blank"
-                rel="noopener"
-                aria-label="Instagram"
-                className="text-[#E4405F] hover:text-[#c13584] transition-colors duration-300"
-              >
-                <Instagram />
-              </a>
+  
               <a
                 href="https://www.linkedin.com/in/oddvar-rønsmoen-skjærstein-90480710/"
                 target="_blank"

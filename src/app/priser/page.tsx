@@ -45,15 +45,14 @@ export default function Priser() {
                 Våre priser
               </h1>
               <p className="text-lg md:text-xl text-[#205e37]/90 leading-relaxed">
-                Uansett om du er privatkunde eller representerer en bedrift, er vi her for å sikre at ditt byggeprosjekt gjennomføres på en trygg, effektiv og profesjonell måte. Med vår ekspertise innen byggekontroll, taksering, prosjektledelse og rådgivning.
-              </p>
+              Vi tilbyr konkurransedyktige og transparente priser – enten du trenger taksering, byggekontroll eller prosjektledelse. Se våre prislister for både private og bedrifter, med tydelig oversikt over hva som er inkludert. Ingen skjulte kostnader – bare faglig trygghet til riktig pris.              </p>
             </Container>
           </div>
           
           {/* Image - right half */}
           <div className="w-full md:w-1/2 h-full relative hidden md:block">
             <Image
-              src="/Byggebistand-Troms/img/calc-ezgif.com-webp-to-png-converter.png"
+              src="/img/pexels-mikhail-nilov-8296990.jpg"
               alt="Calculator illustration"
               fill
               className="object-cover object-center"
@@ -166,20 +165,25 @@ export default function Priser() {
                 id={`section-${index}`}
                 className="bg-white rounded-xl shadow-lg border border-[#205e37]/10 hover:shadow-xl hover:border-[#205e37]/20 transition-all"
               >
-                <div className="px-6 py-4 flex items-center space-x-3 bg-[#f5f9f6] border-b border-[#205e37]/10">
-                  <div className="text-[#205e37]">
-                    {section.icon}
+                <div className="px-6 py-4 flex justify-between items-center bg-[#f5f9f6] border-b border-[#205e37]/10">
+                  <div className="flex items-center space-x-3">
+                    <div className="text-[#205e37]">
+                      {section.icon}
+                    </div>
+                    <h2 className="text-lg md:text-xl font-semibold text-[#205e37]">
+                      {section.title}
+                    </h2>
                   </div>
-                  <h2 className="text-lg md:text-xl font-semibold text-[#205e37]">
-                    {section.title}
-                  </h2>
+                  <div className="font-semibold text-gray-700 whitespace-nowrap">
+                    Eks mva / Inkl mva
+                  </div>
                 </div>
                 <div className="divide-y divide-[#205e37]/10">
                   {section.prices.map(([type, price], idx) => (
                     <div key={idx} className="px-6 py-3 hover:bg-[#f5f9f6] transition-colors duration-150">
                       <div className="flex justify-between items-center">
                         <div className="font-medium text-gray-700">{type}</div>
-                        <div className="font-semibold text-[#205e37] whitespace-nowrap">
+                        <div className="font-semibold text-gray-700 whitespace-nowrap">
                           {price.split('/').map((p, i) => (
                             <span key={i}>
                               {i > 0 && <span className="mx-1">/</span>}
@@ -193,8 +197,6 @@ export default function Priser() {
                 </div>
               </div>
             ))}
-
-     
           </div>
         </Container>
       </section>

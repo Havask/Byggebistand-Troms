@@ -51,7 +51,7 @@ export default function Om() {
           {/* Image - right half */}
           <div className="w-full md:w-1/2 h-full relative hidden md:block">
             <Image
-              src="/Byggebistand-Troms/img/hand.png"
+              src="/img/pexels-sora-shimazaki-5673488.jpg"
               alt="Hand illustration"
               fill
               className="object-cover object-center"
@@ -182,13 +182,13 @@ export default function Om() {
                             <svg className="h-5 w-5 text-[#205e37] mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span>Etablert 2006</span>
+                            <span>Prosjektleder</span>
                           </li>
                           <li className="flex items-start">
                             <svg className="h-5 w-5 text-[#205e37] mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clipRule="evenodd" />
                             </svg>
-                            <span>Ledende aktør i Troms</span>
+                            <span>Byggmester</span>
                           </li>
                         </ul>
                       </div>
@@ -198,7 +198,7 @@ export default function Om() {
                 <div className="w-full md:w-1/3 flex-shrink-0">
                   <div className="relative h-64 md:h-full rounded-lg overflow-hidden shadow-md">
                     <Image
-                      src="/Byggebistand-Troms/img/oddvar.jpg" // Replace with actual image path
+                      src="/img/oddvar.jpg"
                       alt="Oddvar R. Skjærstein"
                       fill
                       className="object-cover"
@@ -285,10 +285,10 @@ export default function Om() {
                   </div>
                   <div className="mt-8">
                     <a
-                      href="#"
+                      href="mailto:oddvar@byggebistand-as.no?subject=Henvendelse%20fra%20Byggebistand%20Troms"
                       className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-[#205e37] hover:bg-[#16482a] transition-colors"
                     >
-                      Send oss en melding
+                      Send oss en E-post
                       <svg className="ml-3 -mr-1 h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M10.293 5.293a1 1 0 011.414 0l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414-1.414L12.586 11H5a1 1 0 110-2h7.586l-2.293-2.293a1 1 0 010-1.414z" clipRule="evenodd" />
                       </svg>
@@ -305,10 +305,10 @@ export default function Om() {
           <div className="mb-12 text-center">
             <Container>
               <h2 className="text-3xl md:text-4xl font-bold text-[#205e37] tracking-tight">
-                Besøk oss i Tromsø
+                Besøk oss 
               </h2>
               <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
-                Vi holder til i Stakkevollvegen 33, midt i hjertet av Tromsø.
+                Vi holder til i Stakkevollvegen 33
               </p>
             </Container>
           </div>

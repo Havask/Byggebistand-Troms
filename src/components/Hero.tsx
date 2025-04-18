@@ -1,6 +1,14 @@
 import { Container } from "@/components/Container";
+import { useEffect, useState } from "react";
 
 export const Hero = () => {
+  const [navbarHeight, setNavbarHeight] = useState(0);
+
+  useEffect(() => {
+    const nav = document.querySelector('nav');
+    if (nav) setNavbarHeight(nav.offsetHeight);
+  }, []);
+
   const handleLinkClick = (href: string) => {
     const [path, hash] = href.split("#");
     if (path === "/om-oss" && hash) {
@@ -8,9 +16,7 @@ export const Hero = () => {
       setTimeout(() => {
         const element = document.getElementById(hash);
         if (element) {
-          const navbar = document.querySelector("nav");
-          const navbarHeight = navbar ? navbar.offsetHeight : 80; // Default to 80px if no navbar
-          const buffer = 40; // Consistent with Om page
+          const buffer = 40;
           const offset = navbarHeight + buffer;
           const elementPosition = element.getBoundingClientRect().top + window.scrollY;
           window.scrollTo({
@@ -18,20 +24,23 @@ export const Hero = () => {
             behavior: "smooth",
           });
         }
-      }, 600); // Delay to allow page navigation
+      }, 600);
     } else {
       window.location.href = href;
     }
   };
 
   return (
-    <div className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden">
+    <div 
+      className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
+      style={{ paddingTop: `${navbarHeight}px` }}
+    >
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 z-0 h-full w-full bg-cover bg-center"
-        style={{ backgroundImage: "url('/Byggebistand-Troms/img/asd.jpg')" }}
+        style={{ backgroundImage: "url('/img/asd.jpg')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-sm"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-[1px]"></div>
       </div>
 
       {/* Content */}
@@ -43,11 +52,11 @@ export const Hero = () => {
           Byggebistand Troms
         </p>
 
-        {/* Main title in the middle - Sophisticated style */}
+        {/* Main title in the middle */}
         <h1
-          className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-6xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-sans animate-fade-in"
+          className="mt-4 text-3xl font-normal text-white sm:text-4xl lg:text-5xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-arial animate-fade-in"
         >
-          Sertifisert taksering i Troms
+          Profesjonell rådgivning, kontroll og taksering
         </h1>
 
         {/* Text and Buttons */}
@@ -59,15 +68,15 @@ export const Hero = () => {
             Daglig leder er takstingeniør Oddvar R. Skjærstein som har både bred og lang erfaring innenfor fagene firmaet representerer.
           </p>
 
-          {/* Call-to-Action Button - Updated to squared style with #205e38 color */}
+          {/* Call-to-Action Button */}
           <div className="mt-20 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
             <a
               href="/om-oss#kontakt-oss"
               onClick={(e) => {
                 e.preventDefault();
-                handleLinkClick("/Byggebistand-Troms/om-oss#kontakt-oss");
+                handleLinkClick("/om-oss#kontakt-oss");
               }}
-              className="w-48 transform rounded-none bg-[#205e38] px-6 py-3 text-base font-semibold text-white shadow-lg transition-all duration-300 sm:w-auto sm:px-8 sm:py-4 sm:text-lg sm:hover:bg-[#1a4b2e] sm:hover:shadow-2xl focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 font-sans animate-fade-in"
+              className="inline-block w-56 transform rounded-md border border-white/20 bg-[#4e9368] px-8 py-4 text-lg font-medium text-white shadow-md transition-all duration-300 hover:bg-[#5aa77b] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 focus:ring-offset-transparent active:scale-95 sm:w-auto sm:text-xl animate-fade-in"
             >
               Kontakt Oss
             </a>

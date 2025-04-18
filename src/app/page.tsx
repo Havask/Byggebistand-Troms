@@ -53,11 +53,11 @@ export default function Home() {
           const sectionTop = section.getBoundingClientRect().top;
           const windowHeight = window.innerHeight;
           const cards = section.querySelectorAll(".card-animate");
-          if (sectionTop < windowHeight * 0.75) { // Changed from 0.6 to 0.75
+          if (sectionTop < windowHeight * 0.75) {
             cards.forEach((card, index) => {
               setTimeout(() => {
                 card.classList.add("is-visible");
-              }, index * 150); // Changed from 200ms to 150ms
+              }, index * 150);
             });
           }
         }
@@ -65,20 +65,20 @@ export default function Home() {
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const sectionLinks = [
-    { name: "Byggekontroll", href: `/Byggebistand-Troms/tjenester#byggekontroll` },
-    { name: "Taksering", href: `/Byggebistand-Troms/tjenester#taksering` },
-    { name: "Skjønn", href: `/Byggebistand-Troms/tjenester#skjonn` },
-    { name: "Overlevering", href: `/Byggebistand-Troms/tjenester#overlevering` },
-    { name: "Byggelånskontroll", href: `/Byggebistand-Troms/tjenester#byggelanskontroll` },
-    { name: "Prosjekt- og Byggeledelse", href: `/Byggebistand-Troms/tjenester#prosjekt-og-byggeledelse` },
-    { name: "Byggesøknader", href: `/Byggebistand-Troms/tjenester#byggesoknader` },
-    { name: "Telefonbistand", href: `/Byggebistand-Troms/tjenester#telefonbistand` },
-    { name: "Rådgivning", href: `/Byggebistand-Troms/tjenester#radgivning` },
+    { name: "Byggekontroll", href: `/tjenester#byggekontroll` },
+    { name: "Taksering", href: `/tjenester#taksering` },
+    { name: "Skjønn", href: `/tjenester#skjonn` },
+    { name: "Overlevering", href: `/tjenester#overlevering` },
+    { name: "Byggelånskontroll", href: `/tjenester#byggelanskontroll` },
+    { name: "Prosjekt- og Byggeledelse", href: `/tjenester#prosjekt-og-byggeledelse` },
+    { name: "Byggesøknader", href: `/tjenester#byggesoknader` },
+    { name: "Telefonbistand", href: `/tjenester#telefonbistand` },
+    { name: "Rådgivning", href: `/tjenester#radgivning` },
   ];
 
   const handleLinkClick = (href: string, title: string) => {
@@ -188,14 +188,12 @@ export default function Home() {
                     </div>
                   </div>
                 </div>
-
-   
               </div>
 
               <div className="flex flex-col h-full">
                 <div className="relative h-full min-h-[400px] rounded-3xl overflow-hidden shadow-2xl group flex-1 card-animate">
                   <Image
-                    src="/Byggebistand-Troms/img/AdobeStock_136331781__msi___jpeg.png"
+                    src="/img/AdobeStock_136331781__msi___jpeg.png"
                     alt="Profesjonell byggekontroll i Troms"
                     fill
                     className="object-cover transition-transform duration-700 group-hover:scale-105"
@@ -228,27 +226,28 @@ export default function Home() {
           ref={(el) => {
             if (el) sectionRefs.current[1] = el;
           }}
-          className="min-h-screen bg-[#205e38] text-white relative snap-start flex items-center justify-center"
+          className="py-24 lg:py-32 bg-[#205e38] text-white relative snap-start"
         >
           <div className="absolute inset-0">
             <Image
-              src="/Byggebistand-Troms/img/construction-7369368_1920.png"
+              src="/img/construction-7369368_1920.png"
               alt="Construction Background"
               fill
               className="object-cover opacity-20"
               priority
             />
           </div>
-          <div className="relative z-10 w-full max-w-6xl mx-auto px-6 lg:px-16 py-12">
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-4xl lg:text-5xl font-arial text-white">
-              Våre tjenester 
+              <h2 className="text-4xl lg:text-5xl font-arial">
+                Tjenester
               </h2>
               <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
-                Vi tilbyr en bred portefølje av profesjonelle tjenester for private boligeiere, bedrifter og utviklere, med fokus på kvalitet og trygghet.
+                Vi tilbyr en bred portefølje av profesjonelle tjenester med fokus på kvalitet og trygghet.
               </p>
             </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" style={{ gridAutoRows: "1fr" }}>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
               {services.map((service, index) => (
                 <Link
                   key={index}
@@ -260,21 +259,18 @@ export default function Home() {
                       service.title
                     );
                   }}
-                  className="group relative bg-white/10 backdrop-blur-md rounded-xl p-8 border border-white/20 hover:bg-white/20 transition-all duration-300 transform hover:-translate-y-1 hover:shadow-xl card-animate"
+                  className="p-5 bg-white/5 rounded-lg transition-all duration-300 hover:bg-white/10 card-animate group"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-white/10 to-transparent rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                  <div className="relative z-10 flex items-start gap-4">
-                    <div className="p-2 bg-[#205e38]/20 rounded-lg text-white group-hover:bg-[#205e38]/40 transition-colors duration-300">
-                      {service.icon}
+                  <div className="flex items-start gap-3">
+                    <div className="p-2 bg-white/10 rounded-md">
+                      {React.cloneElement(service.icon, { className: "w-5 h-5 text-white" })}
                     </div>
                     <div>
-                      <h3 className="text-xl font-semibold text-white group-hover:text-[#dde6df] transition-colors duration-300">
-                        {service.title}
-                      </h3>
-                      <p className="mt-2 text-white/80 text-sm">{service.desc}</p>
+                      <h3 className="text-lg font-medium">{service.title}</h3>
+                      <p className="mt-1 text-sm text-white/80">{service.desc}</p>
                     </div>
                   </div>
-                  <ChevronRightIcon className="absolute right-4 bottom-4 w-5 h-5 text-white/60 group-hover:text-[#dde6df] group-hover:translate-x-1 transition-all duration-300" />
+                  <ChevronRightIcon className="ml-auto mt-2 w-4 h-4 text-white/60 group-hover:text-white group-hover:translate-x-1 transition-all duration-300" />
                 </Link>
               ))}
             </div>
@@ -289,7 +285,7 @@ export default function Home() {
         >
           <div className="text-center mb-16">
             <h2 className="text-4xl lg:text-5xl font-arial">
-              Våre Godkjenninger
+              Godkjenninger
             </h2>
             <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
               Sammen bygger vi en grønnere fremtid med sertifisert kvalitet
@@ -298,7 +294,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 px-6 lg:px-16">
             <div className="bg-white shadow-lg rounded-xl p-6 flex items-center justify-center h-48 card-animate">
               <Image
-                src="/Byggebistand-Troms/img/Skjermbilde 2025-03-21 143945.jpg"
+                src="/img/Skjermbilde 2025-03-21 143945.jpg"
                 alt="Godkjenning 1"
                 width={200}
                 height={200}
@@ -307,7 +303,7 @@ export default function Home() {
             </div>
             <div className="bg-white shadow-lg rounded-xl p-6 flex items-center justify-center h-48 card-animate">
               <Image
-                src="/Byggebistand-Troms/img/SG_GULL_HVITBOKS.png"
+                src="/img/SG_GULL_HVITBOKS.png"
                 alt="Godkjenning 2"
                 width={200}
                 height={200}
@@ -316,7 +312,7 @@ export default function Home() {
             </div>
             <div className="bg-white shadow-lg rounded-xl p-6 flex items-center justify-center h-48 card-animate">
               <Image
-                src="/Byggebistand-Troms/img/Mesterlogo.png"
+                src="/img/Mesterlogo.png"
                 alt="Godkjenning 3"
                 width={200}
                 height={200}
@@ -325,93 +321,56 @@ export default function Home() {
             </div>
           </div>
         </section>
+
         <section
-  ref={(el) => {
-    if (el) sectionRefs.current[3] = el;
-  }}
-  className="py-24 lg:py-32 bg-gradient-to-br from-[#205e38] to-[#1a4c2f] text-white relative snap-start"
->
-  <div className="absolute inset-0">
-    <Image
-      src="/Byggebistand-Troms/img/construction-7194274_1920.png"
-      alt="Construction Background"
-      fill
-      className="object-cover opacity-10"
-      priority
-    />
-  </div>
-  <div className="relative z-10">
-    <div className="max-w-7xl mx-auto px-6 lg:px-8">
-      <div className="text-center mb-16">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-4 relative inline-block">
-          <span className="relative z-10 px-4 bg-clip-text text-transparent bg-gradient-to-r from-white to-[#dde6df]">
-            Våre Partnere
-          </span>
-          <span className="absolute bottom-0 left-0 right-0 h-2 bg-[#dde6df]/30 z-0"></span>
-        </h2>
-        <p className="text-lg text-white/80 max-w-2xl mx-auto mt-6">
-          Vi samarbeider med ledende aktører i bransjen for å sikre beste kvalitet og løsninger
-        </p>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-          {clients.map((client, index) => (
-            <div
-              key={index}
-              className="p-6 bg-white/5 rounded-xl border border-white/10 hover:border-white/20 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg backdrop-blur-sm card-animate group"
-            >
-              <div className="flex items-start gap-4">
-                <div className="flex-shrink-0 p-3 bg-white/10 rounded-lg group-hover:bg-white/20 transition-colors">
-                  {React.cloneElement(client.icon, { className: "w-6 h-6 text-white" })}
-                </div>
-                <div>
-                  <h3 className="text-xl font-semibold mb-2">{client.title}</h3>
-                  <div className="w-full bg-white/10 h-px mb-3 group-hover:bg-white/20 transition-colors"></div>
-                  <p className="text-white/80 text-sm">Dedikert samarbeid for beste løsninger</p>
-                </div>
-              </div>
+          ref={(el) => {
+            if (el) sectionRefs.current[3] = el;
+          }}
+          className="py-24 lg:py-32 bg-[#205e38] text-white relative snap-start"
+        >
+          <div className="absolute inset-0">
+            <Image
+              src="/img/construction-7194274_1920.png"
+              alt="Construction Background"
+              fill
+              className="object-cover opacity-20"
+              priority
+            />
+          </div>
+          <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-8">
+            <div className="text-center mb-12">
+              <h2 className="text-4xl lg:text-5xl font-arial">
+                Partnere
+              </h2>
+              <p className="mt-4 text-lg text-white/80 max-w-2xl mx-auto">
+                Samarbeid med ledende aktører for kvalitet og pålitelighet.
+              </p>
             </div>
-          ))}
-        </div>
 
-        <div className="relative h-full min-h-[400px] rounded-2xl overflow-hidden shadow-2xl card-animate group">
-          <Image
-            src="/Byggebistand-Troms/img/1-96196c3e.png"
-            alt="Partners Image"
-            fill
-            className="object-cover transition-transform duration-700 group-hover:scale-105"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent flex items-end p-6">
-            <div className="text-white">
-              <h3 className="text-xl font-bold mb-2">Strategiske samarbeid</h3>
-              <p className="text-white/90">Gjennom langvarige partnerskap sikrer vi kontinuerlig kvalitetsutvikling</p>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+              {[
+                { title: "Private boligeiere", icon: <UserGroupIcon /> },
+                { title: "Borettslag", icon: <UserGroupIcon /> },
+                { title: "Boligsameier", icon: <UserGroupIcon /> },
+                { title: "Advokater", icon: <ScaleIcon /> },
+                { title: "Entreprenører/utbyggere", icon: <WrenchScrewdriverIcon /> },
+                { title: "Forsikringsselskap", icon: <ShieldCheckIcon /> },
+              ].map((client, index) => (
+                <div
+                  key={index}
+                  className="p-5 bg-white/5 rounded-lg transition-all duration-300 hover:bg-white/10 card-animate"
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="p-2 bg-white/10 rounded-md">
+                      {React.cloneElement(client.icon, { className: "w-5 h-5 text-white" })}
+                    </div>
+                    <h3 className="text-lg font-medium">{client.title}</h3>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Partner logos section */}
-      <div className="mt-20">
-        <h3 className="text-center text-xl font-semibold mb-8 text-white/90">
-          Noen av våre samarbeidspartnere
-        </h3>
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
-          {[1, 2, 3, 4].map((item) => (
-            <div 
-              key={item}
-              className="bg-white/5 p-6 rounded-xl border border-white/10 hover:bg-white/10 transition-colors duration-300 flex items-center justify-center h-32 card-animate"
-            >
-              <div className="text-white/50 text-lg font-medium">
-                Partner Logo {item}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
+        </section>
 
         <section
           ref={(el) => {
@@ -420,7 +379,7 @@ export default function Home() {
           className="py-24 lg:py-32 bg-[#dde6df] text-[#205e38] snap-start"
         >
           <div className="text-center max-w-4xl mx-auto">
-            <h2 className="text-4xl lg:text-5xl font-extrabold">
+            <h2 className="text-4xl lg:text-5xl font-arial">
               Klar for ditt neste prosjekt?
             </h2>
             <p className="mt-4 text-lg text-gray-700 max-w-2xl mx-auto">
@@ -431,7 +390,7 @@ export default function Home() {
                 href={`${basePath}/om-oss#kontakt-oss`}
                 onClick={(e) => {
                   e.preventDefault();
-                  handleLinkClick(`/Byggebistand-Troms/om-oss#kontakt-oss`, "Kontakt oss");
+                  handleLinkClick(`/om-oss#kontakt-oss`, "Kontakt oss");
                 }}
                 className="inline-flex items-center justify-center px-8 py-4 bg-[#205e38] text-white rounded-xl font-semibold text-lg hover:bg-[#1a4c2f] hover:shadow-lg transition-all duration-300"
               >
