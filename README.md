@@ -1,24 +1,43 @@
 
-
 ![Alt Text](/public/img/logo.svg)
-
 # Byggebistand Troms Website
-Repository for the Byggebistand Troms website, hosted at [https://byggebistand-as.no](https://byggebistand-as.no). This project serves as a digital presence for Byggebistand Troms, providing information and services related to construction assistance, building consultancy, and related offerings in the Troms.
 
-It also serves as part of my portfolio of projects. 
 
-## Overview
+<br/>
 
-This is a static website built to showcase the services, contact details, and expertise of Byggebistand Troms. It is deployed via GitHub Pages and designed to be lightweight, responsive, and user-friendly.
+**Website**: [byggebistand-as.no](https://byggebistand-as.no)  
+**Repository**: Codebase for the website.
 
-## Features
+This project establishes the digital presence for **Byggebistand Troms**, offering information and services related to construction assistance, building consultancy, and related expertise in Troms, Norway.
 
-- **Service Listings**: Detailed descriptions of construction-related services offered by Byggebistand Troms.
-- **Contact Information**: Easy access to get in touch with the company.
-- **Responsive Design**: Optimized for viewing on desktop, tablet, and mobile devices.
-- **Simple Navigation**: Intuitive layout for users to find information quickly.
+It also serves as part of my personal portfolio of web development projects.
 
-## Technologies Used
+---
 
-- **Next.js**: Structure of the website.
-- **GitHub Pages**: Hosting and deployment.
+## 🚀 Overview
+
+This is a **static website** designed to:
+
+- Showcase the services and expertise of Byggebistand Troms
+- Provide simple contact access
+- Deliver a **lightweight**, **responsive**, and **user-friendly** experience
+
+The site is deployed using **GitHub Pages**.
+
+---
+
+## ✨ Features
+
+- **Service Listings**: Detailed descriptions of construction and consultancy services.
+- **Contact Information**: Easy ways to reach Byggebistand Troms.
+- **Responsive Design**: Optimized for desktop, tablet, and mobile views.
+- **Simple Navigation**: Clear and intuitive layout to quickly find information.
+
+---
+
+## 🛠️ Technologies Used
+
+- **Next.js** – Framework for building the website structure
+- **GitHub Pages** – Hosting and deployment platform
+
+---
