@@ -5,7 +5,7 @@ export const Hero = () => {
   const [navbarHeight, setNavbarHeight] = useState(0);
 
   useEffect(() => {
-    const nav = document.querySelector('nav');
+    const nav = document.querySelector("nav");
     if (nav) setNavbarHeight(nav.offsetHeight);
   }, []);
 
@@ -31,30 +31,30 @@ export const Hero = () => {
   };
 
   return (
-    <div 
+    <div
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
       style={{ paddingTop: `${navbarHeight}px` }}
     >
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 z-0 h-full w-full bg-cover bg-center"
-        style={{ backgroundImage: "url('/img/asd.jpg')" }}
+        style={{ backgroundImage: "url('/img/pexels-efrem-efre-2786187-31023312-2.jpg')" }}
       >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-[1px]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-[0px]"></div>
       </div>
 
       {/* Content */}
       <Container className="relative z-10 flex flex-col items-center justify-center text-center">
         {/* Smaller text above */}
         <p
-          className="text-xl font-medium text-white sm:text-2xl lg:text-3xl bg-clip-text bg-gradient-to-r from-white to-gray-200 text-transparent tracking-tight font-sans animate-fade-in"
+          className="text-2xl font-medium text-white sm:text-3xl lg:text-3xl bg-clip-text bg-gradient-to-r from-white to-gray-200 text-transparent tracking-tight font-sans animate-fade-in"
         >
           Byggebistand Troms
         </p>
 
         {/* Main title in the middle */}
         <h1
-          className="mt-4 text-3xl font-normal text-white sm:text-4xl lg:text-5xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-arial animate-fade-in"
+          className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-5xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-arial animate-fade-in"
         >
           Profesjonell rådgivning, kontroll og taksering
         </h1>

@@ -1,10 +1,10 @@
 # Byggebistand Troms Website
 
-npm run deploy 
+![Alt Text](/public/img/logo.svg)
 
-Welcome to the official repository for the Byggebistand Troms website, hosted at [https://byggebistand-as.no](https://byggebistand-as.no). This project serves as a digital presence for Byggebistand Troms, providing information and services related to construction assistance, building consultancy, and related offerings in the Troms region of Norway.
+Repository for the Byggebistand Troms website, hosted at [https://byggebistand-as.no](https://byggebistand-as.no). This project serves as a digital presence for Byggebistand Troms, providing information and services related to construction assistance, building consultancy, and related offerings in the Troms.
 
-It also serves as part of my portfolio of project 
+It also serves as part of my portfolio of projects. 
 
 ## Overview
 
@@ -13,7 +13,7 @@ This is a static website built to showcase the services, contact details, and ex
 ## Features
 
 - **Service Listings**: Detailed descriptions of construction-related services offered by Byggebistand Troms.
-- **Contact Information**: Easy access to get in touch with the team.
+- **Contact Information**: Easy access to get in touch with the company.
 - **Responsive Design**: Optimized for viewing on desktop, tablet, and mobile devices.
 - **Simple Navigation**: Intuitive layout for users to find information quickly.
 

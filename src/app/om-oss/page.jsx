@@ -78,7 +78,7 @@ export default function Om() {
                   Byggebistand Troms  
                 </h2>
               </div>
-              <div className="prose prose-lg text-gray-600 max-w-none">
+              <div className="text-gray-600 text-lg leading-relaxed space-y-4">
                 <p>
                   Byggebistand Troms ble etablert i 2006 og har siden den gang vært en ledende aktør innen byggekontroll, taksering og teknisk rådgivning i Troms-regionen.
                 </p>
@@ -141,9 +141,11 @@ export default function Om() {
                       Oddvar R. Skjærstein
                     </h2>
                   </div>
-                  <div className="prose prose-lg text-gray-600 max-w-none">
+                  <div className="text-gray-600 text-lg leading-relaxed space-y-4">
                     <p>
                       Daglig leder, Oddvar R. Skjærstein, er takstingeniør med bred og lang erfaring innen de fagområdene firmaet representerer. Med over 40 års erfaring fra byggebransjen, samt svennebrev, mesterbrev og takstingeniørutdanning, har han en solid kompetanse på området.
+                    </p>
+                    <p>
                     </p>
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
@@ -198,7 +200,7 @@ export default function Om() {
                 <div className="w-full md:w-1/3 flex-shrink-0">
                   <div className="relative h-64 md:h-full rounded-lg overflow-hidden shadow-md">
                     <Image
-                      src="/img/oddvar.jpg"
+                      src="/img/image001.png"
                       alt="Oddvar R. Skjærstein"
                       fill
                       className="object-cover"
@@ -227,7 +229,7 @@ export default function Om() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold text-[#205e37] mb-4">Kontaktinformasjon</h3>
-                  <div className="space-y-4">
+                  <div className="space-y-4 text-lg">
                     <div className="flex items-start">
                       <svg className="h-5 w-5 text-[#205e37] mt-1 mr-3 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
                         <path fillRule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clipRule="evenodd" />
@@ -269,7 +271,7 @@ export default function Om() {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold text-[#205e37] mb-4">Åpningstider</h3>
-                  <div className="space-y-3">
+                  <div className="space-y-3 text-lg">
                     <div className="flex justify-between">
                       <span className="text-gray-600">Mandag - Fredag</span>
                       <span className="font-medium text-gray-900">08:00 - 16:00</span>
@@ -307,7 +309,7 @@ export default function Om() {
               <h2 className="text-3xl md:text-4xl font-bold text-[#205e37] tracking-tight">
                 Besøk oss 
               </h2>
-              <p className="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+              <p className="mt-4 text-lg text-gray-600 max-w-2xl mx-auto">
                 Vi holder til i Stakkevollvegen 33
               </p>
             </Container>
@@ -336,13 +338,6 @@ export default function Om() {
         }
         .font-serif {
           font-family: 'Playfair Display', serif;
-        }
-        .prose {
-          color: #4b5563;
-        }
-        .prose p {
-          margin-top: 1.25em;
-          margin-bottom: 1.25em;
         }
       `}</style>
     </div>

@@ -64,14 +64,14 @@ export default function Tjenester() {
           cards.forEach((card, index) => {
             setTimeout(() => {
               card.classList.add("is-visible");
-            }, index * 150); // 150ms stagger like Home page
+            }, index * 150);
           });
         }
       }
     };
 
     window.addEventListener("scroll", handleScroll);
-    handleScroll(); // Trigger on mount
+    handleScroll();
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -82,7 +82,6 @@ export default function Tjenester() {
         <div className="absolute inset-0 bg-[#205e37] opacity-5 z-0"></div>
         
         <div className="relative z-10 h-full flex flex-col md:flex-row">
-          {/* Text content - left half */}
           <div className="w-full md:w-1/2 h-full flex items-center justify-center p-8">
             <Container className="max-w-2xl px-4">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight mb-6 text-[#205e37]">
@@ -96,7 +95,6 @@ export default function Tjenester() {
             </Container>
           </div>
           
-          {/* Image - right half */}
           <div className="w-full md:w-1/2 h-full relative hidden md:block">
             <Image
               src="/img/pexels-pixabay-416405.jpg"
@@ -114,31 +112,34 @@ export default function Tjenester() {
       <section ref={sectionRef} className="py-16 sm:py-20">
         <Container>
           <div className="max-w-6xl mx-auto">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={index}
-                  className="bg-white rounded-xl shadow-lg border border-[#205e37]/10 p-6 transition-all hover:shadow-xl hover:border-[#205e37]/20 group flex flex-col card-animate"
-                >
-                  <div className="relative h-48 w-full mb-4 rounded-lg overflow-hidden flex-shrink-0">
-                    <Image
-                      src={service.image}
-                      alt={service.title}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
-                    />
-                  </div>
-                  <div className="flex-grow">
-                    <h3 className="text-xl font-bold text-[#205e37] mb-3">
-                      {service.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              ))}
-            </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+  {services.map((service, index) => (
+    <div
+      key={index}
+      className="bg-white rounded-2xl overflow-hidden shadow-md border border-[#205e37]/10 hover:shadow-lg hover:border-[#205e37]/20 transition-all duration-300 group flex flex-col card-animate"
+    >
+      <div className="relative h-64 w-full overflow-hidden">
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          className="object-cover group-hover:scale-105 transition-transform duration-500"
+          priority={index < 3}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-[#205e37]/30 via-transparent to-transparent"></div>
+      </div>
+      <div className="p-6 flex flex-col flex-grow">
+        <h3 className="text-2xl font-bold text-[#205e37] mb-3">
+          {service.title}
+        </h3>
+        <p className="text-gray-600 text-base leading-relaxed flex-grow">
+          {service.description}
+        </p>
+      </div>
+    </div>
+  ))}
+</div>
+
           </div>
         </Container>
       </section>
@@ -154,7 +155,7 @@ export default function Tjenester() {
           </p>
           <a 
             href="/om-oss#kontakt-oss" 
-            className="inline-block px-8 py-4 bg-[#205e37] text-white rounded-lg font-semibold hover:bg-[#16482a] transition-colors duration-200 shadow-lg"
+            className="inline-block px-8 py-4 bg-[#205e37] text-white rounded-lg font-semibold hover:bg-[#16482a] transition-colors duration-200 shadow-lg hover:shadow-xl"
           >
             Kontakt oss
           </a>
