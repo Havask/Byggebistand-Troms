@@ -155,7 +155,7 @@ export default function Priser() {
                   </svg>
                 ),
                 prices: [
-                  ["Reisekostnader/bykjøring kr 300 eks mva", "Medgått / Medgått"],
+                  ["Reisekostnader/bykjøring kr 360 eks mva", "Medgått / Medgått"],
                   ["Ferger/tunell/bomstasjoner etc kr 6 pr km eks mva", "Medgåtte km / Medgåtte km"],
                 ],
               },
