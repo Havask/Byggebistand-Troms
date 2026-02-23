@@ -51,8 +51,8 @@ const certifications = [
 ];
 
 /* ─── Scroll reveal ─── */
-function useReveal(threshold = 0.12): [React.RefObject<HTMLDivElement | null>, boolean] {
-  const ref = useRef<HTMLDivElement | null>(null);
+function useReveal(threshold = 0.12): [React.RefObject<HTMLDivElement>, boolean] {
+  const ref = useRef<HTMLDivElement>(null);
   const [visible, setVisible] = useState(false);
   useEffect(() => {
     const el = ref.current;

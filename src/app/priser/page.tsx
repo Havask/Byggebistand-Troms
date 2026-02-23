@@ -98,11 +98,21 @@ function useReveal(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, bo
   return [ref, visible];
 }
 
-function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
+function Reveal({
+  children,
+  delay = 0,
+  className = "",
+}: {
+  children: React.ReactNode;
+  delay?: number;
+  className?: string;
+}) {
   const [ref, visible] = useReveal(0.06);
+
   return (
     <div
-      ref={ref}
+      // ✅ cast ref to satisfy TypeScript
+      ref={ref as React.LegacyRef<HTMLDivElement>}
       className={className}
       style={{
         opacity: visible ? 1 : 0,

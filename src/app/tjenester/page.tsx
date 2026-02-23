@@ -119,17 +119,17 @@ function useReveal(threshold = 0.1): [React.RefObject<HTMLDivElement | null>, bo
 function Reveal({ children, delay = 0, className = "" }: { children: React.ReactNode; delay?: number; className?: string }) {
   const [ref, visible] = useReveal(0.06);
   return (
-    <div
-      ref={ref}
-      className={className}
-      style={{
-        opacity: visible ? 1 : 0,
-        transform: visible ? "translateY(0)" : "translateY(32px)",
-        transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
-      }}
-    >
-      {children}
-    </div>
+<div
+  ref={ref as React.LegacyRef<HTMLDivElement>} 
+  className={className}
+  style={{
+    opacity: visible ? 1 : 0,
+    transform: visible ? "translateY(0)" : "translateY(32px)",
+    transition: `opacity 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s, transform 0.8s cubic-bezier(0.16,1,0.3,1) ${delay}s`,
+  }}
+>
+  {children}
+</div>
   );
 }
 
