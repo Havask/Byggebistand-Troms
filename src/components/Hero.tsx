@@ -38,7 +38,7 @@ export const Hero = () => {
       {/* Background Image with Overlay */}
       <div
         className="absolute inset-0 z-0 h-full w-full bg-cover bg-center"
-        style={{ backgroundImage: "url('/img/pexels-efrem-efre-2786187-31023312-2.jpg')" }}
+        style={{ backgroundImage: "url('/img/background.jpg')" }}
       >
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-[0px]"></div>
       </div>
@@ -56,7 +56,7 @@ export const Hero = () => {
         <h1
           className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-5xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-arial animate-fade-in"
         >
-          Profesjonell rådgivning, kontroll og taksering
+          Rådgivning, Kontroll og Taksering
         </h1>
 
         {/* Text and Buttons */}
@@ -65,7 +65,7 @@ export const Hero = () => {
           <p
             className="text-lg text-gray-100 sm:text-xl lg:text-2xl opacity-90 font-sans animate-fade-in"
           >
-            Daglig leder er takstingeniør Oddvar R. Skjærstein som har både bred og lang erfaring innenfor fagene firmaet representerer.
+           Daglig leder, takstingeniør Oddvar R. Skjærstein, representerer firmaet med bred erfaring og mange års fartstid innen sine fagområder.
           </p>
 
           {/* Call-to-Action Button */}
