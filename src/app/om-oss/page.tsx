@@ -19,7 +19,7 @@ const experience = ["40+ års erfaring", "Prosjektleder", "Byggmester"];
 const contactInfo = [
   { label: "Besøksadresse", value: "Stakkevollvegen 33, 9010 Tromsø" },
   { label: "Postadresse", value: "Lars Hagerups veg 26, 9012 Tromsø" },
-  { label: "Telefon", value: "(+47) 77 68 85 00", href: "tel:+4777688500" },
+  { label: "Telefon", value: "(+47) 906 49 008", href: "tel:+4777688500" },
   { label: "E-post", value: "oddvar@byggebistand-as.no", href: "mailto:oddvar@byggebistand-as.no" },
 ];
 

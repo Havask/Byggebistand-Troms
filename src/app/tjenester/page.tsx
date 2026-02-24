@@ -487,7 +487,7 @@ export default function Tjenester() {
               <span className="text-sm text-white/45">
                 Eller ring{" "}
                 <a href="tel:77692200" className="font-semibold text-white/70 hover:text-white transition-colors duration-300">
-                  776 92 200
+                  906 49 008
                 </a>
               </span>
             </div>

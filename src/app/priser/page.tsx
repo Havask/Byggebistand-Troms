@@ -25,9 +25,9 @@ const priceSections = [
     title: "Pantedokumenter i bank med verdi",
     badge: null,
     prices: [
-      ["Enebolig", "8 400,-", "10 500,-"],
-      ["Tomannsbolig", "7 920,-", "9 900,-"],
-      ["Rekkehus", "7 920,-", "9 900,-"],
+      ["Enebolig", "11 200,-", "14 000,-"],
+      ["Tomannsbolig", "9 600,-", "12 000,-"],
+      ["Rekkehus", "8 800,-", "11 000,-"],
       ["Leiligheter under 60 m²", "6 560,-", "8 200,-"],
       ["Leiligheter over 60 m²", "7 200,-", "9 000,-"],
       ["Fritidseiendom", "6 800,-", "8 500,-"],
@@ -64,8 +64,8 @@ const priceSections = [
     title: "Ordinære timepriser i prosjekter",
     badge: null,
     prices: [
-      ["Ansvarlig søker og byggesøknader", "1 560,-", "1 950,-"],
-      ["Prosjektledelse med utarbeiding av tilbudsdokumenter", "1 560,-", "1 950,-"],
+      ["Ansvarlig søker og byggesøknader", "1 640,-", "2050,-"],
+      ["Prosjektledelse med utarbeiding av tilbudsdokumenter", "1 640,-", "2 050,-"],
       ["Vedlikeholdsplaner for borettslag og boligsameier", "Tilbud", "Tilbud"],
       ["Byggekontrolloppdrag", "Tilbud", "Tilbud"],
     ],
@@ -444,7 +444,7 @@ export default function Priser() {
               <span className="text-sm text-white/45">
                 Eller ring{" "}
                 <a href="tel:77692200" className="font-semibold text-white/70 hover:text-white transition-colors duration-300">
-                  776 92 200
+                  906 49 008
                 </a>
               </span>
             </div>
