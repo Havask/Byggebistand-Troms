@@ -17,7 +17,7 @@ const qualifications = ["Svennebrev", "Mesterbrev", "Takstingeniørutdanning"];
 const experience = ["40+ års erfaring", "Prosjektleder", "Byggmester"];
 
 const contactInfo = [
-  { label: "Besøksadresse", value: "Stakkevollvegen 33, 9010 Tromsø" },
+  { label: "Besøksadresse", value: "Stakkevollvegen 48, 9010 Tromsø" },
   { label: "Postadresse", value: "Lars Hagerups veg 26, 9012 Tromsø" },
   { label: "Telefon", value: "(+47) 906 49 008", href: "tel:+4777688500" },
   { label: "E-post", value: "oddvar@byggebistand-as.no", href: "mailto:oddvar@byggebistand-as.no" },
@@ -423,7 +423,7 @@ export default function Om() {
                 Besøk oss
               </h2>
               <p className="mt-3 text-[15px] text-white/45 max-w-md mx-auto leading-relaxed">
-                Vi holder til i Stakkevollvegen 33, Tromsø.
+                Vi holder til i Stakkevollvegen 48, Tromsø.
               </p>
             </Reveal>
           </div>
