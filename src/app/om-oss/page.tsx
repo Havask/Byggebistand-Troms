@@ -1,5 +1,4 @@
 "use client";
-import { Container } from "@/components/Container";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
@@ -132,8 +131,8 @@ export default function Om() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-20">
           <div className="max-w-2xl">
             <Reveal>
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.25em] uppercase text-white/45 mb-6">
-                <span className="w-10 h-px bg-emerald-400/40" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 Siden 2006
               </span>
             </Reveal>
@@ -165,8 +164,8 @@ export default function Om() {
             {/* Text */}
             <div>
               <Reveal>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1d4d36]/55 mb-5">
-                  <span className="w-8 h-px bg-[#1d4d36]/25" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#1d4d36]/15 bg-[#1d4d36]/[0.05] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#1d4d36]/70 mb-5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   Vår historie
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1d4d36] tracking-tight leading-[1.15] mb-6">
@@ -233,15 +232,15 @@ export default function Om() {
       <section className="relative py-24 md:py-36 overflow-hidden">
         <div className="absolute inset-0 bg-[#1a4a2e]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a4a2e]/95 via-[#1a4a2e]/80 to-[#1a4a2e]/95" />
-        <div className="absolute top-1/2 left-0 w-[400px] h-[400px] bg-emerald-400/[0.04] rounded-full blur-[100px]" />
+        <div className="animate-breathe absolute top-1/2 left-0 w-[400px] h-[400px] bg-emerald-400/[0.04] rounded-full blur-[100px]" />
 
         <div className="relative z-10 max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-16 lg:gap-20 items-start">
             {/* Text */}
             <div>
               <Reveal>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-5">
-                  <span className="w-8 h-px bg-white/20" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   Daglig leder
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-[1.15] mb-6">
@@ -262,7 +261,7 @@ export default function Om() {
                     <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-white/35 mb-4">Kvalifikasjoner</p>
                     <div className="space-y-2">
                       {qualifications.map((q, i) => (
-                        <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                        <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.06] backdrop-blur-md border border-white/[0.1]">
                           <div className="w-5 h-5 rounded-full bg-emerald-400/15 flex items-center justify-center flex-shrink-0">
                             <svg className="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -278,7 +277,7 @@ export default function Om() {
                     <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-white/35 mb-4">Erfaring</p>
                     <div className="space-y-2">
                       {experience.map((e, i) => (
-                        <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.04] border border-white/[0.06]">
+                        <div key={i} className="flex items-center gap-3 px-4 py-3 rounded-xl bg-white/[0.06] backdrop-blur-md border border-white/[0.1]">
                           <div className="w-5 h-5 rounded-full bg-emerald-400/15 flex items-center justify-center flex-shrink-0">
                             <svg className="w-3 h-3 text-emerald-400" fill="currentColor" viewBox="0 0 20 20">
                               <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -296,7 +295,7 @@ export default function Om() {
             {/* Photo */}
             <Reveal delay={0.1}>
               <div className="relative">
-                <div className="absolute -top-4 -right-4 w-32 h-32 bg-emerald-400/[0.06] rounded-full blur-[40px]" />
+                <div className="animate-breathe absolute -top-4 -right-4 w-32 h-32 bg-emerald-400/[0.06] rounded-full blur-[40px]" />
                 <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/[0.08] shadow-2xl shadow-black/20">
                   <Image
                     src="/img/image001.png"
@@ -322,10 +321,9 @@ export default function Om() {
           {/* Header */}
           <div className="text-center mb-16">
             <Reveal>
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1d4d36]/55 mb-4">
-                <span className="w-8 h-px bg-[#1d4d36]/25" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#1d4d36]/15 bg-[#1d4d36]/[0.05] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#1d4d36]/70 mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 Ta kontakt
-                <span className="w-8 h-px bg-[#1d4d36]/25" />
               </span>
               <h2 className="text-3xl md:text-4xl font-bold text-[#1d4d36] tracking-tight">
                 Kontakt oss
@@ -339,7 +337,7 @@ export default function Om() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {/* Contact details */}
             <Reveal delay={0.05}>
-              <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#1d4d36]/[0.05] p-8 h-full">
+              <div className="bg-white/55 backdrop-blur-xl rounded-2xl border border-white/70 ring-1 ring-[#1d4d36]/[0.04] shadow-[0_10px_40px_-15px_rgba(26,74,46,0.13)] p-8 h-full">
                 <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#1d4d36]/40 mb-6">Kontaktinformasjon</p>
                 <div className="space-y-4">
                   {contactInfo.map((item, idx) => (
@@ -369,7 +367,7 @@ export default function Om() {
             <Reveal delay={0.1}>
               <div className="space-y-6 h-full flex flex-col">
                 {/* Hours */}
-                <div className="bg-white/80 backdrop-blur-sm rounded-2xl border border-[#1d4d36]/[0.05] p-8 flex-1">
+                <div className="bg-white/55 backdrop-blur-xl rounded-2xl border border-white/70 ring-1 ring-[#1d4d36]/[0.04] shadow-[0_10px_40px_-15px_rgba(26,74,46,0.13)] p-8 flex-1">
                   <p className="text-[11px] font-semibold tracking-[0.15em] uppercase text-[#1d4d36]/40 mb-6">Åpningstider</p>
                   <div className="space-y-4">
                     {hours.map((h, idx) => (
@@ -414,10 +412,9 @@ export default function Om() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 pt-20 md:pt-28 pb-0">
           <div className="text-center mb-12">
             <Reveal>
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/40 mb-4">
-                <span className="w-8 h-px bg-white/15" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 Finn oss
-                <span className="w-8 h-px bg-white/15" />
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
                 Besøk oss
@@ -431,7 +428,7 @@ export default function Om() {
 
         <div className="relative z-10 w-full h-[450px] md:h-[500px]">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1386.4657009970945!2d18.968991900000002!3d69.66546129999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x45c4c5b38825d625%3A0x23369cff9a5e22f6!2sByggeBistand%20Troms%20AS!5e0!3m2!1sen!2sno!4v1744061223040!5m2!1sen!2sno"
+            src="https://www.google.com/maps?q=Byggebistand+AS,+Stakkevollvegen+48,+9010+Troms%C3%B8&output=embed"
             width="100%"
             height="100%"
             className="w-full h-full"
@@ -442,21 +439,6 @@ export default function Om() {
           />
         </div>
       </section>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-        body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          overflow-x: hidden;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
     </div>
   );
 }

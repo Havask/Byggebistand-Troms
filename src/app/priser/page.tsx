@@ -1,5 +1,4 @@
 "use client";
-import { Container } from "@/components/Container";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
@@ -234,8 +233,8 @@ export default function Priser() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-20">
           <div className="max-w-2xl">
             <Reveal>
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.25em] uppercase text-white/45 mb-6">
-                <span className="w-10 h-px bg-emerald-400/40" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 Prisliste 2025
               </span>
             </Reveal>
@@ -262,7 +261,7 @@ export default function Priser() {
                     key={s.id}
                     onClick={() => scrollToSection(s.id)}
                     className="inline-flex items-center px-4 py-2 rounded-xl
-                               bg-white/[0.06] border border-white/[0.08]
+                               bg-white/[0.06] backdrop-blur-md border border-white/[0.12]
                                text-[13px] text-white/60 font-medium
                                hover:bg-white/[0.12] hover:border-white/[0.15] hover:text-white/85
                                transition-all duration-300"
@@ -273,7 +272,7 @@ export default function Priser() {
                 <button
                   onClick={() => scrollToSection(priceSections[4].id)}
                   className="inline-flex items-center px-4 py-2 rounded-xl
-                             bg-white/[0.06] border border-white/[0.08]
+                             bg-white/[0.06] backdrop-blur-md border border-white/[0.12]
                              text-[13px] text-white/60 font-medium
                              hover:bg-white/[0.12] hover:text-white/85
                              transition-all duration-300"
@@ -339,9 +338,10 @@ export default function Priser() {
                 <Reveal key={section.id} delay={sectionIndex * 0.03}>
                   <div
                     id={section.id}
-                    className="scroll-mt-28 bg-white/80 backdrop-blur-sm rounded-2xl overflow-hidden
-                               border border-[#1d4d36]/[0.05] hover:border-[#1d4d36]/[0.1]
-                               shadow-sm hover:shadow-xl hover:shadow-[#1d4d36]/[0.04]
+                    className="scroll-mt-28 bg-white/55 backdrop-blur-xl rounded-2xl overflow-hidden
+                               border border-white/70 ring-1 ring-[#1d4d36]/[0.04] hover:ring-[#1d4d36]/[0.10]
+                               shadow-[0_10px_40px_-15px_rgba(26,74,46,0.13)]
+                               hover:shadow-[0_24px_50px_-18px_rgba(26,74,46,0.22)]
                                transition-all duration-500"
                   >
                     {/* Table header */}
@@ -405,14 +405,13 @@ export default function Priser() {
       <section className="relative py-32 md:py-44 overflow-hidden">
         <div className="absolute inset-0 bg-[#1a4a2e]" />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a4a2e]/95 via-[#1a4a2e]/75 to-[#1a4a2e]/95" />
-        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-emerald-400/[0.05] blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="animate-breathe absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-emerald-400/[0.05] blur-[120px] -translate-x-1/2 -translate-y-1/2" />
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 mb-6">
-              <span className="w-8 h-px bg-white/20" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               Spørsmål?
-              <span className="w-8 h-px bg-white/20" />
             </span>
           </Reveal>
 
@@ -451,21 +450,6 @@ export default function Priser() {
           </Reveal>
         </div>
       </section>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-        body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          overflow-x: hidden;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
     </div>
   );
 }

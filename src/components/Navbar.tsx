@@ -48,8 +48,8 @@ export const Navbar = () => {
           w-full fixed top-0 z-50 h-[80px]
           transition-all duration-300 ease-out
           ${scrolled
-            ? "bg-white/95 backdrop-blur-md shadow-md shadow-[#1d4d36]/5"
-            : "bg-white shadow-sm"
+            ? "bg-white/70 backdrop-blur-xl shadow-lg shadow-[#1d4d36]/[0.07] border-b border-white/40"
+            : "bg-white/90 backdrop-blur-md shadow-sm"
           }
         `}
       >
@@ -84,7 +84,16 @@ export const Navbar = () => {
               </Link>
             ))}
 
-
+            <Link
+              href="/om-oss#kontakt-oss"
+              className="ml-3 inline-flex items-center gap-2 px-5 py-2.5 rounded-xl
+                         bg-[#1d4d36] text-white text-[0.9rem] font-semibold
+                         shadow-sm shadow-[#1d4d36]/20
+                         hover:bg-[#163d2b] hover:shadow-md hover:shadow-[#1d4d36]/25
+                         active:scale-[0.98] transition-all duration-200"
+            >
+              Kontakt oss
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -154,7 +163,16 @@ export const Navbar = () => {
               </Link>
             ))}
 
-
+            <Link
+              href="/om-oss#kontakt-oss"
+              onClick={() => setIsOpen(false)}
+              className="mt-4 inline-flex items-center justify-center px-5 py-3.5 rounded-xl
+                         bg-[#1d4d36] text-white text-[1.05rem] font-semibold
+                         shadow-sm shadow-[#1d4d36]/20
+                         hover:bg-[#163d2b] active:scale-[0.98] transition-all duration-200"
+            >
+              Kontakt oss
+            </Link>
           </div>
         </div>
       </div>

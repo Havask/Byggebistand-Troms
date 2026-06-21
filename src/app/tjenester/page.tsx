@@ -1,5 +1,4 @@
 "use client";
-import { Container } from "@/components/Container";
 import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 import { ArrowRightIcon } from "@heroicons/react/24/solid";
@@ -31,7 +30,7 @@ const services = [
     subtitle: "Verdivurdering",
     description: "Profesjonell taksering av boliger, tomter og næringseiendommer, inkludert tilstandsrapporter og verdivurdering for finansiering eller forsikring.",
     highlights: ["Tilstandsrapporter", "Verdivurdering", "Forsikring & finans"],
-    image: "/img/pexels-rdne-5921494.jpg",
+    image: "/img/service-taksering.jpg",
     icon: <CalculatorIcon className="w-5 h-5" />,
   },
   {
@@ -49,7 +48,7 @@ const services = [
     subtitle: "Trygg overtakelse",
     description: "Bistand ved overtakelse av ny eller brukt bolig, med kontroll av teknisk standard og dokumentasjon for å sikre en trygg handel for både kjøper og selger.",
     highlights: ["Teknisk kontroll", "Dokumentasjon", "Kjøper & selger"],
-    image: "/img/pexels-rdne-8293778.jpg",
+    image: "/img/service-overlevering.jpg",
     icon: <DocumentCheckIcon className="w-5 h-5" />,
   },
   {
@@ -76,7 +75,7 @@ const services = [
     subtitle: "Søknadshåndtering",
     description: "Hjelp med byggesøknader, ansvarlig søker-rolle og byggteknisk prosjektering for en smidig godkjenningsprosess.",
     highlights: ["Ansvarlig søker", "Prosjektering", "Godkjenning"],
-    image: "/img/pexels-olly-3760072.jpg",
+    image: "/img/service-byggesoknader.jpg",
     icon: <DocumentCheckIcon className="w-5 h-5" />,
   },
   {
@@ -94,7 +93,7 @@ const services = [
     subtitle: "Strategisk støtte",
     description: "Uavhengig rådgivning innen byggeprosjekter, kontrakter og tekniske løsninger for å sikre smarte valg og god gjennomføring.",
     highlights: ["Kontrakter", "Tekniske løsninger", "Smarte valg"],
-    image: "/img/pexels-vlada-karpovich-7433837.jpg",
+    image: "/img/service-radgivning.jpg",
     icon: <UserGroupIcon className="w-5 h-5" />,
   },
 ];
@@ -240,8 +239,8 @@ export default function Tjenester() {
         <div className="relative z-10 max-w-6xl mx-auto px-6 w-full py-20">
           <div className="max-w-2xl">
             <Reveal>
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.25em] uppercase text-white/45 mb-6">
-                <span className="w-10 h-px bg-emerald-400/40" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-6">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                 9 tjenester
               </span>
             </Reveal>
@@ -268,7 +267,7 @@ export default function Tjenester() {
                     key={s.id}
                     onClick={() => scrollToService(s.id)}
                     className="inline-flex items-center gap-2 px-4 py-2 rounded-xl
-                               bg-white/[0.06] border border-white/[0.08]
+                               bg-white/[0.06] backdrop-blur-md border border-white/[0.12]
                                text-[13px] text-white/60 font-medium
                                hover:bg-white/[0.12] hover:border-white/[0.15] hover:text-white/85
                                transition-all duration-300"
@@ -280,7 +279,7 @@ export default function Tjenester() {
                 <button
                   onClick={() => scrollToService(services[5].id)}
                   className="inline-flex items-center px-4 py-2 rounded-xl
-                             bg-white/[0.06] border border-white/[0.08]
+                             bg-white/[0.06] backdrop-blur-md border border-white/[0.12]
                              text-[13px] text-white/60 font-medium
                              hover:bg-white/[0.12] hover:text-white/85
                              transition-all duration-300"
@@ -314,7 +313,7 @@ export default function Tjenester() {
                     />
                   </div>
                   <span className="text-[11px] font-bold text-[#1d4d36]/30 tabular-nums whitespace-nowrap">
-                    {String(activeIndex + 1).padStart(2, "0")}/{String(services.length).padStart(2, "0")}
+                    {activeIndex + 1}/{services.length}
                   </span>
                 </div>
 
@@ -335,7 +334,7 @@ export default function Tjenester() {
                         >
                           <span className={`text-[10px] font-bold tabular-nums w-5 flex-shrink-0 transition-colors duration-300
                                             ${isActive ? "text-emerald-300" : "text-[#1d4d36]/20 group-hover:text-[#1d4d36]/40"}`}>
-                            {String(i + 1).padStart(2, "0")}
+                            {i + 1}
                           </span>
                           <span className="truncate">{s.title}</span>
                         </button>
@@ -441,7 +440,7 @@ export default function Tjenester() {
           className="object-cover opacity-[0.08] mix-blend-luminosity"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a4a2e]/95 via-[#1a4a2e]/75 to-[#1a4a2e]/95" />
-        <div className="absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-emerald-400/[0.05] blur-[120px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="animate-breathe absolute top-1/2 left-1/2 w-[600px] h-[600px] rounded-full bg-emerald-400/[0.05] blur-[120px] -translate-x-1/2 -translate-y-1/2" />
 
         {/* Large decorative text */}
         <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 select-none pointer-events-none">
@@ -452,10 +451,9 @@ export default function Tjenester() {
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 mb-6">
-              <span className="w-8 h-px bg-white/20" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-6">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               Kom i gang
-              <span className="w-8 h-px bg-white/20" />
             </span>
           </Reveal>
 
@@ -494,21 +492,6 @@ export default function Tjenester() {
           </Reveal>
         </div>
       </section>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-        body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          overflow-x: hidden;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
     </div>
   );
 }

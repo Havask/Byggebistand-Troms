@@ -35,54 +35,75 @@ export const Hero = () => {
       className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden"
       style={{ paddingTop: `${navbarHeight}px` }}
     >
-      {/* Background Image with Overlay */}
+      {/* Background Image */}
       <div
         className="absolute inset-0 z-0 h-full w-full bg-cover bg-center"
         style={{ backgroundImage: "url('/img/background.jpg')" }}
-      >
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-[#308453]/40 backdrop-blur-[0px]"></div>
-      </div>
+      />
+
+      {/* Readability scrim — darkens behind the text, photo stays visible at the edges */}
+      <div
+        className="absolute inset-0 z-0"
+        style={{
+          background:
+            "radial-gradient(ellipse 75% 60% at 50% 45%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.42) 45%, rgba(0,0,0,0.12) 75%, rgba(0,0,0,0) 100%)",
+        }}
+      />
 
       {/* Content */}
-      <Container className="relative z-10 flex flex-col items-center justify-center text-center">
-        {/* Smaller text above */}
-        <p
-          className="text-2xl font-medium text-white sm:text-3xl lg:text-3xl bg-clip-text bg-gradient-to-r from-white to-gray-200 text-transparent tracking-tight font-sans animate-fade-in"
-        >
+      <Container className="relative z-10 flex flex-col items-center justify-center px-4 text-center lg:px-8">
+        {/* Eyebrow */}
+        <span className="mb-6 inline-flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.22em] text-white/80 animate-fade-in [text-shadow:0_1px_10px_rgba(0,0,0,0.5)]">
+          <span className="h-px w-8 bg-white/25" />
           Byggebistand Troms
-        </p>
+          <span className="h-px w-8 bg-white/25" />
+        </span>
 
-        {/* Main title in the middle */}
-        <h1
-          className="mt-4 text-4xl font-normal text-white sm:text-5xl lg:text-5xl bg-clip-text bg-gradient-to-r from-white to-gray-300 text-transparent tracking-tight font-arial animate-fade-in"
-        >
-          Rådgivning, Kontroll og Taksering
+        {/* Main title */}
+        <h1 className="max-w-4xl text-4xl font-bold leading-[1.1] tracking-tight text-white sm:text-5xl lg:text-6xl animate-fade-in animation-delay-200 [text-shadow:0_2px_20px_rgba(0,0,0,0.55)]">
+          Rådgivning, Kontroll
+          <br className="hidden sm:block" /> og{" "}
+          <span className="bg-gradient-to-r from-emerald-200 to-emerald-400 bg-clip-text text-transparent">
+            Taksering
+          </span>
         </h1>
 
-        {/* Text and Buttons */}
-        <div className="mt-24 max-w-3xl space-y-16 px-4 lg:px-8">
-          {/* Additional Text */}
-          <p
-            className="text-lg text-gray-100 sm:text-xl lg:text-2xl opacity-90 font-sans animate-fade-in"
-          >
-           Daglig leder, takstingeniør Oddvar R. Skjærstein, representerer firmaet med bred erfaring og mange års fartstid innen sine fagområder.
-          </p>
+        {/* Subtext */}
+        <p className="mt-8 max-w-2xl text-base leading-relaxed text-white/90 sm:text-lg lg:text-xl animate-fade-in animation-delay-400 [text-shadow:0_2px_16px_rgba(0,0,0,0.6)]">
+          Daglig leder, takstingeniør Oddvar R. Skjærstein, representerer firmaet
+          med bred erfaring og mange års fartstid innen sine fagområder.
+        </p>
 
-          {/* Call-to-Action Button */}
-          <div className="mt-20 flex flex-col items-center gap-6 sm:flex-row sm:justify-center">
-            <a
-              href="/om-oss#kontakt-oss"
-              onClick={(e) => {
-                e.preventDefault();
-                handleLinkClick("/om-oss#kontakt-oss");
-              }}
-              className="inline-block w-56 transform rounded-md border border-white/20 bg-[#4e9368] px-8 py-4 text-lg font-medium text-white shadow-md transition-all duration-300 hover:bg-[#5aa77b] hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-[#308453] focus:ring-offset-2 focus:ring-offset-transparent active:scale-95 sm:w-auto sm:text-xl animate-fade-in"
-            >
-              Kontakt Oss
-            </a>
-          </div>
+        {/* Call-to-Action */}
+        <div className="mt-12 flex flex-col items-center gap-5 sm:flex-row sm:justify-center animate-fade-in animation-delay-600">
+          <a
+            href="/om-oss#kontakt-oss"
+            onClick={(e) => {
+              e.preventDefault();
+              handleLinkClick("/om-oss#kontakt-oss");
+            }}
+            className="group inline-flex items-center gap-3 rounded-2xl bg-white px-9 py-4 text-base font-semibold text-[#1d4d36] shadow-lg shadow-black/20 transition-all duration-300 hover:bg-emerald-50 hover:shadow-[0_8px_45px_-6px_rgba(110,231,183,0.6)] hover:-translate-y-0.5 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/70 focus:ring-offset-2 focus:ring-offset-transparent"
+          >
+            Kontakt oss
+            <svg className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
+              <path strokeLinecap="round" strokeLinejoin="round" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+            </svg>
+          </a>
+          <a
+            href="/tjenester"
+            className="inline-flex items-center gap-2 rounded-2xl border border-white/25 px-9 py-4 text-base font-semibold text-white/90 backdrop-blur-sm transition-all duration-300 hover:border-white/50 hover:bg-white/10 active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-white/40"
+          >
+            Se tjenester
+          </a>
         </div>
       </Container>
+
+      {/* Scroll cue */}
+      <div className="absolute bottom-8 left-1/2 z-10 -translate-x-1/2 animate-fade-in animation-delay-600">
+        <svg className="h-6 w-6 animate-bounce text-white/40" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+          <path strokeLinecap="round" strokeLinejoin="round" d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+        </svg>
+      </div>
     </div>
   );
 };

@@ -60,8 +60,8 @@ const config: Config = {
         600: "0.6s",
       },
       fontFamily: {
-        sans: ["Inter", ...defaultTheme.fontFamily.sans],
-        stock: ["Inter", ...defaultTheme.fontFamily.sans],
+        sans: ["var(--font-dm-sans)", ...defaultTheme.fontFamily.sans],
+        stock: ["var(--font-dm-sans)", ...defaultTheme.fontFamily.sans],
       },
     },
   },

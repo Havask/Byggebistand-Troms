@@ -5,9 +5,46 @@
 
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   html,
   body {
     @apply dark:bg-trueGray-900;
+    overflow-x: hidden;
+  }
+}
+
+/* ─── Aurora glow (Tromsø northern-lights accent) ─── */
+@keyframes aurora-drift {
+  0%   { transform: translate(-18%, -12%) scale(1.05); }
+  50%  { transform: translate(18%, 14%) scale(1.45); }
+  100% { transform: translate(-18%, -12%) scale(1.05); }
+}
+.animate-aurora-1 {
+  animation: aurora-drift 13s ease-in-out infinite;
+}
+.animate-aurora-2 {
+  animation: aurora-drift 17s ease-in-out infinite reverse;
+}
+
+/* Breathing glow — opacity only, safe with translate-positioned blobs */
+@keyframes breathe {
+  0%, 100% { opacity: 0.45; }
+  50%      { opacity: 1; }
+}
+.animate-breathe {
+  animation: breathe 7s ease-in-out infinite;
+}
+
+/* Respect users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  .animate-aurora-1,
+  .animate-aurora-2,
+  .animate-breathe,
+  .animate-cinematicPulse {
+    animation: none !important;
   }
 }
 

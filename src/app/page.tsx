@@ -118,16 +118,17 @@ export default function Home() {
       </Container>
 
       {/* ════════════════ Stats Strip ════════════════ */}
-      <section className="relative bg-[#1a4a2e] border-b border-white/[0.06]">
+      <section className="relative bg-gradient-to-b from-[#173f28] via-[#1a4a2e] to-[#173f28] border-b border-white/[0.06]">
         <div className="max-w-6xl mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4">
             {stats.map((s, i) => (
               <Reveal key={i} delay={i * 0.07}>
-                <div className={`py-11 md:py-16 text-center relative
+                <div className={`group py-12 md:py-16 text-center relative
                   ${i > 0 ? "before:absolute before:left-0 before:top-1/2 before:-translate-y-1/2 before:h-10 before:w-px before:bg-white/[0.08]" : ""}`}>
-                  <div className="text-2xl md:text-[2rem] font-bold text-emerald-300 tracking-tight mb-1.5">
+                  <div className="text-3xl md:text-[2.75rem] font-bold text-white tracking-tight mb-2 transition-transform duration-300 group-hover:-translate-y-1">
                     {s.value}
                   </div>
+                  <div className="mx-auto mb-3 h-0.5 w-5 rounded-full bg-emerald-400/40 transition-all duration-500 group-hover:w-10 group-hover:bg-emerald-400/80" />
                   <div className="text-[10px] md:text-[11px] text-white/55 font-semibold tracking-[0.18em] uppercase">
                     {s.label}
                   </div>
@@ -150,8 +151,8 @@ export default function Home() {
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-6 mb-16">
             <Reveal>
               <div>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1d4d36]/60 mb-4">
-                  <span className="w-8 h-px bg-[#1d4d36]/30" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-[#1d4d36]/15 bg-[#1d4d36]/[0.05] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#1d4d36]/70 mb-4">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                   Hva vi tilbyr
                 </span>
                 <h2 className="text-3xl md:text-4xl lg:text-[2.75rem] font-bold text-[#1d4d36] tracking-tight leading-[1.15]">
@@ -176,13 +177,17 @@ export default function Home() {
                   href={s.href}
                   onClick={(e) => { e.preventDefault(); handleLinkClick(s.href); }}
                   className="group relative flex items-start gap-4 rounded-2xl p-5 h-full
-                             bg-white/70 backdrop-blur-sm
-                             border border-[#1d4d36]/[0.05] hover:border-[#1d4d36]/[0.15]
-                             hover:bg-white hover:shadow-xl hover:shadow-[#1d4d36]/[0.06]
+                             bg-white/55 backdrop-blur-xl
+                             border border-white/70 ring-1 ring-[#1d4d36]/[0.04]
+                             shadow-[0_10px_40px_-15px_rgba(26,74,46,0.15)]
+                             hover:bg-white/85 hover:ring-[#1d4d36]/[0.10]
+                             hover:shadow-[0_24px_50px_-18px_rgba(26,74,46,0.28)] hover:-translate-y-1
                              transition-all duration-500 ease-out"
                 >
-                  <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#1d4d36]/[0.06] flex items-center justify-center text-[#1d4d36]/60
-                                  group-hover:bg-[#1d4d36] group-hover:text-white
+                  <div className="flex-shrink-0 w-11 h-11 rounded-2xl flex items-center justify-center text-[#1d4d36]/70
+                                  bg-gradient-to-br from-[#1d4d36]/[0.09] to-[#1d4d36]/[0.02] ring-1 ring-[#1d4d36]/[0.06]
+                                  group-hover:from-[#1d4d36] group-hover:to-[#2a6b48] group-hover:text-white group-hover:ring-transparent
+                                  group-hover:shadow-lg group-hover:shadow-[#1d4d36]/25
                                   transition-all duration-300 ease-out">
                     {s.icon}
                   </div>
@@ -217,8 +222,8 @@ export default function Home() {
             {/* Left — text */}
             <div>
               <Reveal>
-                <span className="inline-flex items-center gap-2.5 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 mb-5">
-                  <span className="w-8 h-px bg-white/25" />
+                <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-5">
+                  <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
                   Om oss
                 </span>
                 <h2 className="text-3xl md:text-4xl font-bold text-white tracking-tight leading-[1.15] mb-6">
@@ -245,9 +250,9 @@ export default function Home() {
                     <span
                       key={i}
                       className="inline-flex items-center gap-2 px-4 py-2.5 rounded-xl
-                                 bg-white/[0.06] border border-white/[0.08]
+                                 bg-white/[0.06] backdrop-blur-md border border-white/[0.12]
                                  text-[13px] text-white/65 font-medium
-                                 hover:bg-white/[0.12] hover:border-white/[0.15] hover:text-white/85
+                                 hover:bg-white/[0.14] hover:border-white/[0.2] hover:text-white/90
                                  transition-all duration-300 cursor-default"
                     >
                       <span className="text-white/40">{c.icon}</span>
@@ -262,8 +267,8 @@ export default function Home() {
             <Reveal delay={0.12}>
               <div className="relative">
                 {/* Glow behind image */}
-                <div className="absolute -top-8 -right-8 w-48 h-48 bg-emerald-400/[0.07] rounded-full blur-[50px]" />
-                <div className="absolute -bottom-8 -left-8 w-36 h-36 bg-emerald-400/[0.05] rounded-full blur-[40px]" />
+                <div className="animate-breathe absolute -top-8 -right-8 w-48 h-48 bg-emerald-400/[0.07] rounded-full blur-[50px]" />
+                <div className="animate-breathe absolute -bottom-8 -left-8 w-36 h-36 bg-emerald-400/[0.05] rounded-full blur-[40px]" style={{ animationDelay: "2s" }} />
 
                 <div className="relative rounded-2xl overflow-hidden ring-1 ring-white/[0.08] shadow-2xl shadow-black/20">
                   <Image
@@ -289,10 +294,9 @@ export default function Home() {
         <div className="relative z-10 max-w-5xl mx-auto px-6">
           <Reveal>
             <div className="text-center mb-14">
-              <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-[#1d4d36]/55 mb-4">
-                <span className="w-8 h-px bg-[#1d4d36]/25" />
+              <span className="inline-flex items-center gap-2 rounded-full border border-[#1d4d36]/15 bg-[#1d4d36]/[0.05] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-[#1d4d36]/70 mb-4">
+                <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
                 Kvalitetssikret
-                <span className="w-8 h-px bg-[#1d4d36]/25" />
               </span>
               <h2 className="text-2xl md:text-3xl font-bold text-[#1d4d36] tracking-tight">
                 Godkjenninger
@@ -306,9 +310,10 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-5 max-w-3xl mx-auto">
             {certifications.map((cert, idx) => (
               <Reveal key={idx} delay={idx * 0.08}>
-                <div className="bg-white rounded-2xl p-6 flex flex-col items-center justify-center h-52
-                               border border-[#1d4d36]/[0.04] hover:border-[#1d4d36]/[0.12]
-                               shadow-sm hover:shadow-xl hover:shadow-[#1d4d36]/[0.05]
+                <div className="bg-white/55 backdrop-blur-xl rounded-2xl p-6 flex flex-col items-center justify-center h-52
+                               border border-white/70 ring-1 ring-[#1d4d36]/[0.04] hover:ring-[#1d4d36]/[0.10]
+                               shadow-[0_10px_40px_-15px_rgba(26,74,46,0.15)]
+                               hover:shadow-[0_24px_50px_-18px_rgba(26,74,46,0.25)] hover:-translate-y-1
                                transition-all duration-500 group cursor-default">
                   <Image
                     src={cert.src}
@@ -339,14 +344,13 @@ export default function Home() {
         />
         <div className="absolute inset-0 bg-gradient-to-b from-[#1a4a2e]/95 via-[#1a4a2e]/80 to-[#1a4a2e]/95" />
         {/* Centered glow */}
-        <div className="absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full bg-emerald-400/[0.04] blur-[100px] -translate-x-1/2 -translate-y-1/2" />
+        <div className="animate-breathe absolute top-1/2 left-1/2 w-[500px] h-[500px] rounded-full bg-emerald-400/[0.04] blur-[100px] -translate-x-1/2 -translate-y-1/2" />
 
         <div className="relative z-10 max-w-3xl mx-auto px-6 text-center">
           <Reveal>
-            <span className="inline-flex items-center gap-3 text-[11px] font-semibold tracking-[0.2em] uppercase text-white/50 mb-5">
-              <span className="w-8 h-px bg-white/20" />
+            <span className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.07] px-3.5 py-1.5 text-[11px] font-semibold tracking-[0.18em] uppercase text-white/70 mb-5">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               Kom i gang
-              <span className="w-8 h-px bg-white/20" />
             </span>
           </Reveal>
 
@@ -385,21 +389,6 @@ export default function Home() {
           </Reveal>
         </div>
       </section>
-
-      <style jsx global>{`
-        @import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap');
-
-        body {
-          font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          overflow-x: hidden;
-        }
-
-        html {
-          scroll-behavior: smooth;
-        }
-      `}</style>
     </div>
   );
 }

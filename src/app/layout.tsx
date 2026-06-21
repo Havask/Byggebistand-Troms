@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { DM_Sans } from "next/font/google";
 import { ThemeProvider } from "next-themes";
 import "./globals.css";
 
@@ -7,11 +7,15 @@ import { Navbar } from "@/components/Navbar";
 import { Footer } from "@/components/Footer";
 
 
-const inter = Inter({ subsets: ["latin"] });
+const dmSans = DM_Sans({
+  subsets: ["latin"],
+  display: "swap",
+  variable: "--font-dm-sans",
+});
 
 export const metadata: Metadata = {
   title: "Byggebistand Troms",
-  description: "",
+  description: "Uavhengig byggekontroll, taksering og teknisk rådgivning i Troms-regionen siden 2006.",
 };
 
 export default function RootLayout({
@@ -20,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className={inter.className}>
+    <html lang="nb" suppressHydrationWarning className={dmSans.variable}>
+      <body className="font-sans antialiased">
         <ThemeProvider attribute="class">
           <Navbar />
           <div>{children}</div>
